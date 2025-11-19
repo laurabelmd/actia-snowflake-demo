@@ -1,0 +1,51 @@
+TEST REPORT - COMPOSANT TGX-2847-A
+==========================================
+
+Date: 2024-11-15
+Operateur: QC-12
+Usine: Toulouse
+Ligne de production: A-3
+
+TESTS ÉLECTRIQUES
+-----------------
+Tension: 3.3V - PASS
+Résistance: 1.2kΩ - PASS
+Current: 450mA - PASS
+Capacitance: 100μF - PASS
+
+TESTS ENVIRONNEMENTAUX
+----------------------
+Temperature Range: -40°C to 85°C - PASS
+Humidity: 85% RH - PASS
+Vibration Test: 20G - PASS
+Shock Test: 50G - PASS
+
+TESTS CONFORMITÉ
+----------------
+EMI Compliance: EN55022 - PASS
+RoHS Compliance: YES
+REACH Compliance: YES
+ISO 26262 ASIL-B: PASS
+
+RÉSULTATS
+---------
+Defects Found: None
+Quality Score: 98.7%
+Test Duration: 45 minutes
+Recommendation: APPROVED FOR PRODUCTION
+
+INFORMATIONS BATCH
+------------------
+Components tested: 247
+Batch Number: 2024-11-B-0847
+Lot Size: 500 units
+Supplier: OMRON Japan
+Cost per unit: €45.20
+Lead Time: 6 weeks
+
+SIGNATURE
+---------
+Validator: Jean Dupont
+Date validation: 2024-11-15 16:30
+Status: RELEASED
+
