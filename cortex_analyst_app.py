@@ -406,26 +406,28 @@ user_question = st.text_input(
     label_visibility="collapsed"
 )
 
-if user_question:
-    # Add user message
-    st.session_state.messages.append({
-        "role": "user",
-        "content": user_question
-    })
-    
-    # Simulate processing
-    with st.spinner("🤖 Cortex Analyst analyse vos données..."):
-        time.sleep(1.5)
-    
-    # Generate contextual response based on keywords
-    response = get_cortex_response(user_question, factory)
-    
-    st.session_state.messages.append({
-        "role": "assistant",
-        "content": response
-    })
-    
-    st.rerun()
+if user_question and user_question.strip():
+    # Check if this is a new question (not already in history)
+    if not st.session_state.messages or st.session_state.messages[-1]["content"] != user_question:
+        # Add user message
+        st.session_state.messages.append({
+            "role": "user",
+            "content": user_question
+        })
+        
+        # Simulate processing
+        with st.spinner("🤖 Cortex Analyst analyse vos données..."):
+            time.sleep(1.5)
+        
+        # Generate contextual response based on keywords
+        response = get_cortex_response(user_question, factory)
+        
+        st.session_state.messages.append({
+            "role": "assistant",
+            "content": response
+        })
+        
+        st.rerun()
 
 # Recent Activity
 st.markdown(f"<h2 style='color: {ACTIA_GREY}; margin-top: 40px;'>📋 Activité Récente</h2>", unsafe_allow_html=True)
