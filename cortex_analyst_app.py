@@ -12,6 +12,121 @@ ACTIA_GREY = "#6e6b70"   # Actia grey (official)
 ACTIA_LIGHT_GREY = "#E0E0E0"
 ACTIA_DARK_GREEN = "#007A43"
 
+# Function to generate responses (simulated Cortex Analyst)
+def get_cortex_response(question, factory):
+    question_lower = question.lower()
+    
+    # Quality related
+    if any(word in question_lower for word in ['qualité', 'taux', 'conformité', 'défaut']):
+        return f"""📊 **Analyse de qualité pour {factory}:**
+
+• **Taux de qualité moyen ce mois:** 98.4%
+• **Évolution:** +0.8% vs mois dernier
+• **Meilleure station:** Test Final (99.5%)
+• **Station à surveiller:** Intégration (97.8%)
+
+**Détails par composant:**
+- TGX-2847: 99.1% (excellent)
+- ECU-2024: 98.2% (normal)
+- PCB-1123: 97.5% (légère baisse)
+
+💡 Recommandation: Audit de la station d'intégration recommandé."""
+    
+    # Production related
+    elif any(word in question_lower for word in ['production', 'produire', 'produit', 'volume', 'quantité']):
+        return f"""📈 **Analyse de production pour {factory}:**
+
+• **Production aujourd'hui:** 1,247 composants
+• **Production cette semaine:** 8,654 composants
+• **Production ce mois:** 26,384 composants
+• **Objectif mensuel:** 30,000 (88% atteint)
+
+**Tendance:**
+- Pic le mercredi: 1,320 unités/jour
+- Creux le lundi: 1,180 unités/jour
+- Croissance: +5.2% vs mois dernier
+
+⚡ Les équipes sont sur la bonne voie pour atteindre l'objectif."""
+    
+    # Components/traceability
+    elif any(word in question_lower for word in ['composant', 'traça', 'pièce', 'problème', 'défectueux']):
+        return f"""🔍 **Analyse des composants pour {factory}:**
+
+**Alertes actives:**
+1. 🔴 **IC-NXP-2847**: Prix +15% (critique)
+   - Fournisseur: NXP Semiconductors
+   - Stock actuel: 3 semaines
+   
+2. 🟡 **PCB-Advanced**: Qualité en baisse
+   - Taux actuel: 96.8% (-1.4%)
+   - 12 défauts détectés cette semaine
+   
+3. 🟡 **Capacitor-MLX**: Délai livraison augmenté
+   - Délai normal: 2 semaines
+   - Délai actuel: 4 semaines
+
+✅ Les autres composants sont dans les normes."""
+    
+    # Predictions/forecasting
+    elif any(word in question_lower for word in ['prévision', 'prévoir', 'futur', 'demain', 'semaine prochaine']):
+        return f"""🔮 **Prévisions pour {factory}:**
+
+**Prochaines 7 jours:**
+- Production attendue: 9,150 composants (+6% vs cette semaine)
+- Taux qualité prévu: 98.6%
+- Risque pénurie: Faible
+
+**Facteurs identifiés:**
+- ✅ Capacité production: Normal
+- ⚠️ Stock IC-NXP-2847: Attention
+- ✅ Équipes: Complet
+- ✅ Équipements: Opérationnels
+
+📊 Confiance de la prévision: 94%"""
+    
+    # Costs/pricing
+    elif any(word in question_lower for word in ['coût', 'prix', 'euro', 'économie', 'budget']):
+        return f"""💰 **Analyse des coûts pour {factory}:**
+
+**Ce mois:**
+- Coût matières premières: €487,340
+- Évolution: +12% vs mois dernier
+- Principaux contributeurs:
+  - IC-NXP-2847: +€42,000 (+15%)
+  - PCB-Advanced: +€28,000 (+12%)
+  - Autres: +€18,000 (+8%)
+
+**Impact sur marge:**
+- Marge actuelle: 28.4%
+- Marge objectif: 30%
+- Écart: -1.6 points
+
+💡 Actions suggérées: Négocier volumes avec NXP, chercher fournisseurs alternatifs."""
+    
+    # General/default
+    else:
+        return f"""🤖 **Résumé général pour {factory}:**
+
+**État actuel:**
+• Production: ✅ Normal (1,247 composants aujourd'hui)
+• Qualité: ✅ Bonne (98.4%)
+• Efficacité (OEE): ✅ Bonne (89.2%)
+• Alertes: ⚠️ 3 actives
+
+**Points d'attention:**
+1. Prix composant IC-NXP-2847 en hausse
+2. Qualité PCB-Advanced en légère baisse
+3. Délais livraison Capacitor-MLX rallongés
+
+**Questions que vous pouvez me poser:**
+- Détails sur la production (volume, tendances)
+- Analyse qualité par station/composant
+- Traçabilité et problèmes composants
+- Prévisions et planification
+- Analyse des coûts et marges
+
+Comment puis-je vous aider plus précisément?"""
+
 # Page configuration
 st.set_page_config(
     page_title="Actia Cortex Analyst",
@@ -311,121 +426,6 @@ if user_question:
     })
     
     st.rerun()
-
-# Function to generate responses (simulated Cortex Analyst)
-def get_cortex_response(question, factory):
-    question_lower = question.lower()
-    
-    # Quality related
-    if any(word in question_lower for word in ['qualité', 'taux', 'conformité', 'défaut']):
-        return f"""📊 **Analyse de qualité pour {factory}:**
-
-• **Taux de qualité moyen ce mois:** 98.4%
-• **Évolution:** +0.8% vs mois dernier
-• **Meilleure station:** Test Final (99.5%)
-• **Station à surveiller:** Intégration (97.8%)
-
-**Détails par composant:**
-- TGX-2847: 99.1% (excellent)
-- ECU-2024: 98.2% (normal)
-- PCB-1123: 97.5% (légère baisse)
-
-💡 Recommandation: Audit de la station d'intégration recommandé."""
-    
-    # Production related
-    elif any(word in question_lower for word in ['production', 'produire', 'produit', 'volume', 'quantité']):
-        return f"""📈 **Analyse de production pour {factory}:**
-
-• **Production aujourd'hui:** 1,247 composants
-• **Production cette semaine:** 8,654 composants
-• **Production ce mois:** 26,384 composants
-• **Objectif mensuel:** 30,000 (88% atteint)
-
-**Tendance:**
-- Pic le mercredi: 1,320 unités/jour
-- Creux le lundi: 1,180 unités/jour
-- Croissance: +5.2% vs mois dernier
-
-⚡ Les équipes sont sur la bonne voie pour atteindre l'objectif."""
-    
-    # Components/traceability
-    elif any(word in question_lower for word in ['composant', 'traça', 'pièce', 'problème', 'défectueux']):
-        return f"""🔍 **Analyse des composants pour {factory}:**
-
-**Alertes actives:**
-1. 🔴 **IC-NXP-2847**: Prix +15% (critique)
-   - Fournisseur: NXP Semiconductors
-   - Stock actuel: 3 semaines
-   
-2. 🟡 **PCB-Advanced**: Qualité en baisse
-   - Taux actuel: 96.8% (-1.4%)
-   - 12 défauts détectés cette semaine
-   
-3. 🟡 **Capacitor-MLX**: Délai livraison augmenté
-   - Délai normal: 2 semaines
-   - Délai actuel: 4 semaines
-
-✅ Les autres composants sont dans les normes."""
-    
-    # Predictions/forecasting
-    elif any(word in question_lower for word in ['prévision', 'prévoir', 'futur', 'demain', 'semaine prochaine']):
-        return f"""🔮 **Prévisions pour {factory}:**
-
-**Prochaines 7 jours:**
-- Production attendue: 9,150 composants (+6% vs cette semaine)
-- Taux qualité prévu: 98.6%
-- Risque pénurie: Faible
-
-**Facteurs identifiés:**
-- ✅ Capacité production: Normal
-- ⚠️ Stock IC-NXP-2847: Attention
-- ✅ Équipes: Complet
-- ✅ Équipements: Opérationnels
-
-📊 Confiance de la prévision: 94%"""
-    
-    # Costs/pricing
-    elif any(word in question_lower for word in ['coût', 'prix', 'euro', 'économie', 'budget']):
-        return f"""💰 **Analyse des coûts pour {factory}:**
-
-**Ce mois:**
-- Coût matières premières: €487,340
-- Évolution: +12% vs mois dernier
-- Principaux contributeurs:
-  - IC-NXP-2847: +€42,000 (+15%)
-  - PCB-Advanced: +€28,000 (+12%)
-  - Autres: +€18,000 (+8%)
-
-**Impact sur marge:**
-- Marge actuelle: 28.4%
-- Marge objectif: 30%
-- Écart: -1.6 points
-
-💡 Actions suggérées: Négocier volumes avec NXP, chercher fournisseurs alternatifs."""
-    
-    # General/default
-    else:
-        return f"""🤖 **Résumé général pour {factory}:**
-
-**État actuel:**
-• Production: ✅ Normal (1,247 composants aujourd'hui)
-• Qualité: ✅ Bonne (98.4%)
-• Efficacité (OEE): ✅ Bonne (89.2%)
-• Alertes: ⚠️ 3 actives
-
-**Points d'attention:**
-1. Prix composant IC-NXP-2847 en hausse
-2. Qualité PCB-Advanced en légère baisse
-3. Délais livraison Capacitor-MLX rallongés
-
-**Questions que vous pouvez me poser:**
-- Détails sur la production (volume, tendances)
-- Analyse qualité par station/composant
-- Traçabilité et problèmes composants
-- Prévisions et planification
-- Analyse des coûts et marges
-
-Comment puis-je vous aider plus précisément?"""
 
 # Recent Activity
 st.markdown(f"<h2 style='color: {ACTIA_GREY}; margin-top: 40px;'>📋 Activité Récente</h2>", unsafe_allow_html=True)
