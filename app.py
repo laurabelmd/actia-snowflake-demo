@@ -1097,198 +1097,243 @@ elif page == "🌐 Marketplace":
             </div>
             """, unsafe_allow_html=True)
 
-# Document AI Page
-elif page == "📄 Document AI":
-    st.markdown(f"<h1 style='color: {ACTIA_GREY};'>📄 Snowflake Document AI</h1>", unsafe_allow_html=True)
-    st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>Structurez vos données non-structurées automatiquement</p>", unsafe_allow_html=True)
+# Tout est Données Page
+elif page == "📄 Tout est Données":
+    st.markdown(f"<h1 style='color: {ACTIA_GREY};'>📄 Tout est Données</h1>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>Énorme potentiel dans les données non structurées</p>", unsafe_allow_html=True)
     
     st.markdown(f"""
-    <div class='info-box'>
-        <h3>🎯 Cas d'usage Actia</h3>
-        <p>• Testeurs générant des fichiers texte → Structuration automatique</p>
-        <p>• Images de composants → Extraction métadonnées</p>
-        <p>• Factures fournisseurs → Intégration comptable</p>
-        <p>• Rapports qualité PDF → Base de données analytique</p>
+    <div style='background-color: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
+        <h2 style='color: {ACTIA_GREY}; margin-top: 0;'>💡 80% des données d'entreprise sont non structurées</h2>
+        <p style='font-size: 17px; color: {ACTIA_GREY}; line-height: 1.8;'>
+            Les données non structurées (PDF, images, vidéos, audio...) représentent un <strong>potentiel énorme</strong>:
+            <br><br>
+            ✅ <strong>PDF → Excel</strong> → Automatiser l'extraction de données<br>
+            ✅ <strong>Image → Détection défauts</strong> → Contrôle qualité visuel automatique<br>
+            ✅ <strong>Analyse en temps réel</strong> → Snowflake Document AI
+        </p>
     </div>
     """, unsafe_allow_html=True)
     
-    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<br><br>", unsafe_allow_html=True)
     
-    # File uploader
-    st.markdown(f"<h3 style='color: {ACTIA_GREEN};'>📤 Glissez-Déposez vos Documents</h3>", unsafe_allow_html=True)
+    # 2 tabs: PDF textuel et Photo
+    tabs = st.tabs(["📄 PDF → Excel (Analyse d'Écart)", "📷 Photo → Détection Défauts"])
     
-    uploaded_file = st.file_uploader(
-        "Formats supportés: PDF, TXT, Images (JPG, PNG), CSV",
-        type=['pdf', 'txt', 'jpg', 'png', 'csv'],
-        help="Le Document AI va extraire et structurer automatiquement les données"
-    )
-    
-    if uploaded_file is not None:
-        col1, col2 = st.columns([1, 1])
+    # TAB 1: PDF → Excel (Analyse d'Écart et Coûts)
+    with tabs[0]:
+        st.markdown(f"<h2 style='color: {ACTIA_GREY};'>📄 Analyse d'Écart et Coûts (Variance Analysis)</h2>", unsafe_allow_html=True)
+        st.markdown(f"<p style='color: {ACTIA_GREY}; font-size: 16px;'>Convertissez automatiquement vos rapports PDF en données Excel exploitables</p>", unsafe_allow_html=True)
         
-        with col1:
-            st.markdown(f"<h4 style='color: {ACTIA_GREY};'>📄 Document Original</h4>", unsafe_allow_html=True)
-            
-            # Display file info
-            st.info(f"**Fichier:** {uploaded_file.name}\n\n**Taille:** {uploaded_file.size} bytes")
-            
-            # Simulate file content
-            if uploaded_file.name.endswith('.txt'):
-                st.text_area("Aperçu (non structuré):", 
-"""TEST REPORT - COMPOSANT TGX-2847-A
-Date: 2024-11-15
-Operateur: QC-12
-Usine: Toulouse
-
-Tension: 3.3V - PASS
-Current: 450mA - PASS
-Temperature: -40C to 85C - PASS
-Vibration Test: 20G - PASS
-EMI Compliance: EN55022 - PASS
-
-Defects Found: None
-Quality Score: 98.7%
-Recommendation: APPROVED FOR PRODUCTION
-
-Components tested: 247
-Batch: 2024-11-B-0847
-Supplier: OMRON Japan
-Cost: €45.20/unit
-""", height=300, disabled=True)
+        st.markdown("<br>", unsafe_allow_html=True)
         
-        with col2:
-            st.markdown(f"<h4 style='color: {ACTIA_GREEN};'>✨ Données Structurées (AI)</h4>", unsafe_allow_html=True)
+        uploaded_pdf = st.file_uploader("📤 Glissez-déposez votre PDF ici", 
+                                       type=['pdf'], key='pdf_variance')
+        
+        if uploaded_pdf:
+            col_pdf1, col_pdf2 = st.columns([1, 1])
             
-            if st.button("🚀 Lancer Document AI", use_container_width=True):
-                with st.spinner("🤖 IA Snowflake en cours d'analyse..."):
-                    progress_bar = st.progress(0)
-                    for i in range(100):
-                        time.sleep(0.02)
-                        progress_bar.progress(i + 1)
+            with col_pdf1:
+                st.markdown(f"<h4 style='color: {ACTIA_GREY};'>📄 Document PDF Brut</h4>", unsafe_allow_html=True)
                 
-                st.success("✅ Document structuré avec succès!")
+                st.text_area("Contenu extrait du PDF:", """
+RAPPORT D'ANALYSE D'ÉCART - Q4 2024
+Actia Group - Division Automobile
+Date: 20 Novembre 2024
+-------------------------------------------
+
+COMPOSANTS ÉLECTRONIQUES:
+
+TGX-2847-A (ECU Principal)
+- Coût Prévu: €45.20
+- Coût Réel: €52.80
+- Écart: +€7.60 (+16.8%)
+- Volume: 1,247 unités
+- Impact Total: +€9,477
+
+PCB-Advanced (Carte mère)
+- Coût Prévu: €28.50
+- Coût Réel: €31.20
+- Écart: +€2.70 (+9.5%)
+- Volume: 2,134 unités
+- Impact Total: +€5,762
+
+Capacitor-MLX (Condensateur)
+- Coût Prévu: €0.30
+- Coût Réel: €0.42
+- Écart: +€0.12 (+40%)
+- Volume: 15,890 unités
+- Impact Total: +€1,907
+
+IC-NXP-Core (Puce NXP)
+- Coût Prévu: €18.90
+- Coût Réel: €17.50
+- Écart: -€1.40 (-7.4%)
+- Volume: 856 unités
+- Impact Total: -€1,198
+
+-------------------------------------------
+SYNTHÈSE:
+Total Écart: +€16,948
+Taux Variance: +12.3%
+Alerte: Dépassement budget composants
+""", height=450, disabled=True)
+            
+            with col_pdf2:
+                st.markdown(f"<h4 style='color: {ACTIA_GREEN};'>📊 Tableau Excel Généré</h4>", unsafe_allow_html=True)
                 
-                # Display structured data
-                structured_data = {
-                    'Type': ['Rapport Test', 'Date', 'Opérateur', 'Usine', 'Composant',
-                            'Tension', 'Courant', 'Température', 'Test Vibration', 
-                            'Conformité EMI', 'Score Qualité', 'Décision', 
-                            'Quantité Testée', 'Batch', 'Fournisseur', 'Coût Unitaire'],
-                    'Valeur': ['Qualité Composant', '2024-11-15', 'QC-12', 'Toulouse', 'TGX-2847-A',
-                              '3.3V', '450mA', '-40°C à 85°C', '20G', 'EN55022',
-                              '98.7%', '✅ APPROUVÉ', '247', '2024-11-B-0847', 
-                              'OMRON Japan', '€45.20'],
-                    'Statut': ['📄', '📅', '👤', '🏭', '🔧',
-                              '✅ PASS', '✅ PASS', '✅ PASS', '✅ PASS', '✅ PASS',
-                              '✅', '✅', '📊', '📦', '🏢', '💰']
-                }
+                if st.button("🚀 Convertir en Excel", key='convert_pdf', use_container_width=True):
+                    with st.spinner("🔄 Extraction et structuration en cours..."):
+                        time.sleep(2)
+                    
+                    st.success("✅ Document converti avec succès!")
+                    
+                    # DataFrame structuré
+                    df_variance = pd.DataFrame({
+                        'Composant': ['TGX-2847-A', 'PCB-Advanced', 'Capacitor-MLX', 'IC-NXP-Core'],
+                        'Coût Prévu (€)': [45.20, 28.50, 0.30, 18.90],
+                        'Coût Réel (€)': [52.80, 31.20, 0.42, 17.50],
+                        'Écart (€)': [7.60, 2.70, 0.12, -1.40],
+                        'Écart (%)': ['+16.8%', '+9.5%', '+40.0%', '-7.4%'],
+                        'Volume': [1247, 2134, 15890, 856],
+                        'Impact Total (€)': [9477, 5762, 1907, -1198]
+                    })
+                    
+                    # Colorer les écarts
+                    st.dataframe(
+                        df_variance.style.applymap(
+                            lambda x: 'background-color: #ffebee' if isinstance(x, str) and '+' in x else 
+                                     ('background-color: #e8f5e9' if isinstance(x, str) and '-' in x else ''),
+                            subset=['Écart (%)']
+                        ),
+                        use_container_width=True,
+                        hide_index=True
+                    )
+                    
+                    st.markdown("<br>", unsafe_allow_html=True)
+                    
+                    # Metrics
+                    col_m1, col_m2, col_m3 = st.columns(3)
+                    with col_m1:
+                        st.metric("Écart Total", "+€16,948", "⚠️ +12.3%")
+                    with col_m2:
+                        st.metric("Composants Analysés", "4", "100%")
+                    with col_m3:
+                        st.metric("Temps Extraction", "2.3 sec", "vs 15 min manuel")
+                    
+                    st.download_button(
+                        "⬇️ Télécharger Excel",
+                        data="simulation",
+                        file_name="analyse_ecart_Q4_2024.xlsx",
+                        mime="application/vnd.ms-excel",
+                        use_container_width=True
+                    )
+        else:
+            st.info("👆 Uploadez un PDF pour voir la conversion automatique en Excel")
+    
+    # TAB 2: Photo → Détection Défauts
+    with tabs[1]:
+        st.markdown(f"<h2 style='color: {ACTIA_GREY};'>📷 Détection Automatique de Défauts Visuels</h2>", unsafe_allow_html=True)
+        st.markdown(f"<p style='color: {ACTIA_GREY}; font-size: 16px;'>IA pour identifier les défauts sur vos cartes électroniques</p>", unsafe_allow_html=True)
+        
+        st.markdown("<br>", unsafe_allow_html=True)
+        
+        uploaded_photo = st.file_uploader("📤 Glissez-déposez une photo de carte électronique", 
+                                        type=['jpg', 'png', 'jpeg', 'pdf'], key='photo_defect')
+        
+        if uploaded_photo:
+            col_img1, col_img2 = st.columns([1, 1])
+            
+            with col_img1:
+                st.markdown(f"<h4 style='color: {ACTIA_GREY};'>📷 Image Uploadée</h4>", unsafe_allow_html=True)
                 
-                df_structured = pd.DataFrame(structured_data)
-                st.dataframe(df_structured, use_container_width=True, hide_index=True)
-                
-                st.markdown("<br>", unsafe_allow_html=True)
-                
-                col_a, col_b = st.columns(2)
-                
-                with col_a:
+                # Si c'est une image, l'afficher. Si PDF, simuler
+                if uploaded_photo.type.startswith('image'):
+                    st.image(uploaded_photo, caption="Carte électronique à analyser", use_container_width=True)
+                else:
+                    # Pour PDF, afficher un placeholder
                     st.markdown(f"""
-                    <div style='background-color: {ACTIA_GREEN}; padding: 20px; 
-                                border-radius: 10px; color: white;'>
-                        <h4>⚡ Gain de Temps</h4>
-                        <h2 style='color: white;'>95%</h2>
-                        <p>5 min → 15 secondes</p>
+                    <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 60px; text-align: center; border-radius: 10px;'>
+                        <h3 style='color: {ACTIA_GREY};'>📄 PDF Chargé</h3>
+                        <p style='color: {ACTIA_GREY};'>{uploaded_photo.name}</p>
+                        <p style='color: {ACTIA_GREY};'>Taille: {uploaded_photo.size} bytes</p>
                     </div>
                     """, unsafe_allow_html=True)
+            
+            with col_img2:
+                st.markdown(f"<h4 style='color: {ACTIA_GREEN};'>🤖 Analyse IA</h4>", unsafe_allow_html=True)
                 
-                with col_b:
+                if st.button("🔍 Lancer Détection Défauts", key='detect_defects', use_container_width=True):
+                    with st.spinner("🤖 Analyse IA en cours..."):
+                        progress = st.progress(0)
+                        for i in range(100):
+                            time.sleep(0.02)
+                            progress.progress(i + 1)
+                    
+                    st.warning("⚠️ **Défaut détecté sur la carte!**")
+                    
+                    # Simuler un cercle rouge sur une zone
                     st.markdown(f"""
-                    <div style='background-color: {ACTIA_GREY}; padding: 20px; 
-                                border-radius: 10px; color: white;'>
-                        <h4>🎯 Précision IA</h4>
-                        <h2 style='color: white;'>99.2%</h2>
-                        <p>Extraction données</p>
+                    <div style='background-color: #fff3cd; border-left: 5px solid #ffc107; 
+                                padding: 20px; border-radius: 10px; margin: 15px 0;'>
+                        <h4 style='color: #856404; margin: 0;'>🔍 Défaut Identifié</h4>
+                        <br>
+                        <ul style='color: #856404; margin: 10px 0; line-height: 1.8;'>
+                            <li><strong>Type:</strong> Soudure froide (Cold Solder Joint)</li>
+                            <li><strong>Localisation:</strong> Zone C4 (coin supérieur droit)</li>
+                            <li><strong>Composant:</strong> Condensateur C47</li>
+                            <li><strong>Sévérité:</strong> Critique (9/10)</li>
+                            <li><strong>Confiance IA:</strong> 94.3%</li>
+                            <li><strong>Action:</strong> ❌ Rejet - Reprise nécessaire</li>
+                        </ul>
                     </div>
                     """, unsafe_allow_html=True)
-                
-                st.markdown("<br>", unsafe_allow_html=True)
-                
-                # SQL query to access data
-                st.markdown(f"<h4 style='color: {ACTIA_GREEN};'>💾 Données Prêtes pour Snowflake</h4>", unsafe_allow_html=True)
-                
-                st.code("""
--- Les données sont maintenant queryables dans Snowflake
-SELECT 
-    component_id,
-    quality_score,
-    test_date,
-    operator,
-    factory,
-    cost_per_unit,
-    supplier
-FROM actia.quality_tests
-WHERE quality_score > 95 
-    AND test_date >= DATEADD(month, -1, CURRENT_DATE())
-ORDER BY test_date DESC;
-
--- Résultat: 1,247 tests trouvés
-                """, language="sql")
-                
-                # Impact metrics
-                st.markdown(f"<h4 style='color: {ACTIA_GREEN};'>📊 Impact sur Actia</h4>", unsafe_allow_html=True)
-                
-                impact_data = {
-                    'Métrique': ['Documents traités/jour', 'Temps économisé/mois', 
-                                'Erreurs de saisie', 'Coût FTE économisé/an'],
-                    'Avant': ['~50 (manuel)', '120 heures', '~15%', '-'],
-                    'Avec Document AI': ['~800 (automatique)', '480 heures', '<1%', '€85K'],
-                    'Amélioration': ['16x', '4x', '94%', '💰']
-                }
-                
-                df_impact = pd.DataFrame(impact_data)
-                st.dataframe(df_impact, use_container_width=True, hide_index=True)
-    
-    else:
-        # Show examples while waiting for upload
-        st.markdown(f"<h3 style='color: {ACTIA_GREY};'>💡 Exemples de Documents Supportés</h3>", unsafe_allow_html=True)
-        
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            st.markdown(f"""
-            <div style='background-color: white; padding: 20px; border-radius: 10px; 
-                        text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);'>
-                <h1 style='color: {ACTIA_GREEN};'>📄</h1>
-                <h4 style='color: {ACTIA_GREY};'>Rapports Test</h4>
-                <p style='color: {ACTIA_GREY};'>TXT, PDF</p>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        with col2:
-            st.markdown(f"""
-            <div style='background-color: white; padding: 20px; border-radius: 10px; 
-                        text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);'>
-                <h1 style='color: {ACTIA_GREEN};'>🖼️</h1>
-                <h4 style='color: {ACTIA_GREY};'>Images Composants</h4>
-                <p style='color: {ACTIA_GREY};'>JPG, PNG</p>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        with col3:
-            st.markdown(f"""
-            <div style='background-color: white; padding: 20px; border-radius: 10px; 
-                        text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);'>
-                <h1 style='color: {ACTIA_GREEN};'>🧾</h1>
-                <h4 style='color: {ACTIA_GREY};'>Factures</h4>
-                <p style='color: {ACTIA_GREY};'>PDF, CSV</p>
-            </div>
-            """, unsafe_allow_html=True)
-
+                    
+                    # Visualisation du défaut
+                    st.markdown(f"<h5 style='color: {ACTIA_GREY};'>📍 Localisation Précise:</h5>", unsafe_allow_html=True)
+                    st.markdown(f"""
+                    <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 20px; border-radius: 10px; text-align: center;'>
+                        <div style='position: relative; display: inline-block;'>
+                            <div style='width: 300px; height: 200px; background-color: #2d5016; 
+                                        border-radius: 5px; position: relative;'>
+                                <div style='position: absolute; top: 30px; right: 40px; 
+                                            width: 40px; height: 40px; 
+                                            border: 3px solid red; border-radius: 50%;
+                                            animation: pulse 1.5s infinite;'></div>
+                                <div style='position: absolute; top: 25px; right: 85px; 
+                                            background-color: red; color: white; 
+                                            padding: 5px 10px; border-radius: 5px; font-size: 12px;'>
+                                    Zone C4 - Défaut détecté
+                                </div>
+                            </div>
+                        </div>
+                        <p style='color: {ACTIA_GREY}; margin-top: 10px; font-size: 14px;'>
+                            Représentation schématique de la carte avec défaut marqué en rouge
+                        </p>
+                    </div>
+                    <style>
+                    @keyframes pulse {{
+                        0%, 100% {{ opacity: 1; }}
+                        50% {{ opacity: 0.3; }}
+                    }}
+                    </style>
+                    """, unsafe_allow_html=True)
+                    
+                    st.markdown("<br>", unsafe_allow_html=True)
+                    
+                    # Stats
+                    st.markdown(f"""
+                    <div style='background-color: white; padding: 20px; border-radius: 10px; 
+                                box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
+                        <h4 style='color: {ACTIA_GREY}; margin-top: 0;'>📊 Statistiques Contrôle Qualité</h4>
+                        <p><strong>Taux de détection automatique:</strong> <span style='color: {ACTIA_GREEN};'>99.2%</span></p>
+                        <p><strong>Faux positifs:</strong> <span style='color: {ACTIA_GREY};'>0.8%</span></p>
 # Footer
 st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown(f"""
 <div style='text-align: center; padding: 20px; background-color: {ACTIA_GREY}; 
             border-radius: 10px; color: white;'>
-    <p style='margin: 0;'>❄️ <strong>Snowflake x Actia</strong> | Demo EBC 2024</p>
+    <p style='margin: 0;'>❄️ <strong>Snowflake x Actia</strong> | Demo EBC 2025</p>
     <p style='margin: 5px 0 0 0; font-size: 14px;'>Votre plateforme data pour la compétitivité</p>
 </div>
 """, unsafe_allow_html=True)
