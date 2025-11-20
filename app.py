@@ -314,107 +314,156 @@ elif page == "🤖 IA Accessible":
         </div>
         """, unsafe_allow_html=True)
 
-# Traceability Page
-elif page == "🏭 Traçabilité":
-    st.markdown(f"<h1 style='color: {ACTIA_GREY};'>🏭 Traçabilité Intelligente</h1>", unsafe_allow_html=True)
-    st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>Traçabilité ascendante et descendante - De bout en bout</p>", unsafe_allow_html=True)
+# OEE & ML Page (fusion Traçabilité + Prédictions)
+elif page == "🏭 OEE & ML":
+    st.markdown(f"<h1 style='color: {ACTIA_GREY};'>📊 OEE Monitoring & Machine Learning</h1>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>L'IA c'est aussi le ML avec les forecasts</p>", unsafe_allow_html=True)
     
-    # Component selector
-    col1, col2, col3 = st.columns(3)
+    st.markdown("<br>", unsafe_allow_html=True)
     
-    with col1:
-        product_id = st.selectbox("🔧 Produit", ["TGX-2024-001", "TGX-2024-002", "ECU-2024-456"])
-    with col2:
-        factory = st.selectbox("🏭 Usine", ["Toulouse", "Tunis"])
-    with col3:
-        date_range = st.date_input("📅 Date", datetime.now())
+    # Status Alert (inspired by screenshot)
+    st.markdown(f"""
+    <div style='background-color: #ffebee; border-left: 5px solid #f44336; 
+                padding: 20px; border-radius: 10px; margin-bottom: 20px;'>
+        <h3 style='color: #d32f2f; margin: 0;'>🔴 STATUS: Critical - Only able to achieve 35% of remaining production needed</h3>
+        <p style='color: {ACTIA_GREY}; margin-top: 10px; font-size: 16px;'>
+            <strong>REASON:</strong> Current production trend shows ability to produce 51 units vs 144 needed units, 
+            with OEE at 72% and Run Rate at 50%, indicating severe shortfall of 93 units by end of shift.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
-    if st.button("🔍 Tracer le Produit", use_container_width=True):
-        with st.spinner("Recherche dans Snowflake..."):
-            time.sleep(1.5)
+    # OEE Metrics Chart (inspired by screenshot - multi-line graph)
+    st.markdown(f"<h3 style='color: {ACTIA_GREY};'>📈 OEE Metrics - Live Monitoring</h3>", unsafe_allow_html=True)
+    
+    # Generate multi-line OEE data (simulating different stations like screenshot)
+    dates = pd.date_range(start='2024-05-22 15:00', end='2024-05-23 01:00', freq='H')
+    
+    # Create data for multiple production lines (like screenshot)
+    fig_oee = go.Figure()
+    
+    lines = [
+        {'name': 'DTP-RL-01 - Material Intake', 'color': '#1f77b4'},
+        {'name': 'DTP-RL-02 - Storage', 'color': '#ff7f0e'},
+        {'name': 'DTP-RL-03 - Distribution', 'color': '#2ca02c'},
+        {'name': 'DTP-RL-04 - Assembly Line 1', 'color': '#d62728'},
+        {'name': 'DTP-RL-05 - Assembly Line 2', 'color': '#9467bd'},
+        {'name': 'DTP-RL-06 - Quality Check', 'color': '#8c564b'},
+        {'name': 'DTP-RL-07 - Packaging', 'color': '#e377c2'}
+    ]
+    
+    for line in lines:
+        # Generate varying OEE values (70-100% with some drops)
+        oee_values = []
+        for i in range(len(dates)):
+            base = random.uniform(80, 95)
+            # Add occasional drops
+            if random.random() < 0.1:
+                base = random.uniform(60, 75)
+            oee_values.append(base)
+        
+        fig_oee.add_trace(go.Scatter(
+            x=dates,
+            y=oee_values,
+            name=line['name'],
+            mode='lines+markers',
+            line=dict(width=2, color=line['color']),
+            marker=dict(size=6)
+        ))
+    
+    fig_oee.update_layout(
+        height=500,
+        xaxis_title="Time",
+        yaxis_title="OEE (%)",
+        yaxis=dict(range=[50, 105]),
+        hovermode='x unified',
+        plot_bgcolor='white',
+        legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="center", x=0.5)
+    )
+    
+    st.plotly_chart(fig_oee, use_container_width=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Chatbot section (like screenshot with "Why did OEE drop?")
+    col_chat, col_info = st.columns([3, 2])
+    
+    with col_chat:
+        st.markdown(f"""
+        <div style='background-color: white; padding: 20px; border-radius: 15px; 
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
+            <h3 style='color: {ACTIA_GREEN}; margin-top: 0;'>💬 Ask the AI</h3>
+            <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 15px; border-radius: 10px; margin: 10px 0;'>
+                <strong style='color: {ACTIA_GREY};'>Prompt:</strong>
+                <p style='color: {ACTIA_GREY}; margin: 5px 0;'>Why did OEE drop?</p>
+            </div>
+            <div style='background-color: white; border: 2px solid {ACTIA_LIGHT_GREY}; 
+                        padding: 15px; border-radius: 10px;'>
+                <strong style='color: {ACTIA_GREEN};'>Response:</strong>
+                <p style='color: {ACTIA_GREY}; margin-top: 10px; line-height: 1.6;'>
+                    To analyze why OEE dropped, I'll look for significant decreases in the OEE values 
+                    and examine the contributing factors (Quality, Performance, and Availability).
+                    <br><br>
+                    Looking at the data, there are several notable drops in OEE. One significant drop 
+                    occurs at <strong>2024-05-23 01:00:00.000</strong> where OEE falls to 0.7109. 
+                    This drop was caused by:
+                    <br><br>
+                    1. A relatively good <strong>Quality score (0.9552)</strong><br>
+                    2. A decent <strong>Performance score (0.9255)</strong><br>
+                    3. A low <strong>Availability score (0.8042)</strong>
+                    <br><br>
+                    The main factor causing this OEE drop was the <span style='color: #d32f2f;'><strong>low Availability score</strong></span>, 
+                    indicating that the equipment was not running as much as it should have been during this period. 
+                    This could be due to:
+                    <br>
+                    • Unplanned downtime<br>
+                    • Equipment failures<br>
+                    • Setup and adjustment time<br>
+                    • Idle time<br>
+                    • Material shortages
+                </p>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col_info:
+        st.markdown(f"<h3 style='color: {ACTIA_GREEN};'>🎯 ML Predictions</h3>", unsafe_allow_html=True)
         
         st.markdown(f"""
-        <div class='success-box'>
-            <h3>✅ Traçabilité complète trouvée</h3>
-            <p>Produit: {product_id} | Usine: {factory}</p>
+        <div style='background-color: white; padding: 15px; border-radius: 10px; 
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 15px;'>
+            <h4 style='color: {ACTIA_GREY}; margin: 0;'>Forecast Next 4 Hours</h4>
+            <h2 style='color: {ACTIA_GREEN}; margin: 10px 0;'>78% OEE</h2>
+            <p style='color: {ACTIA_GREY}; margin: 0;'>Confidence: 92%</p>
         </div>
         """, unsafe_allow_html=True)
         
-        # Journey visualization
-        col1, col2 = st.columns([2, 1])
+        st.markdown(f"""
+        <div style='background-color: #fff3cd; border-left: 5px solid #ffc107; 
+                    padding: 15px; border-radius: 10px; margin-bottom: 15px;'>
+            <h4 style='color: #856404; margin: 0;'>⚠️ Risk Alert</h4>
+            <p style='color: #856404; margin: 10px 0 0 0;'>
+                Station RL-03 predicted to drop below 75% within 2 hours
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
         
-        with col1:
-            st.markdown(f"<h3 style='color: {ACTIA_GREEN};'>🛤️ Parcours du Produit</h3>", unsafe_allow_html=True)
-            
-            # Create timeline
-            timeline_data = {
-                'Étape': ['Réception Composants', 'Assemblage Carte', 'Test Qualité', 
-                          'Intégration Système', 'Test Final', 'Expédition'],
-                'Date': ['2024-11-01 08:00', '2024-11-01 10:30', '2024-11-01 14:15',
-                        '2024-11-02 09:00', '2024-11-02 15:45', '2024-11-03 11:00'],
-                'Statut': ['✅ Validé', '✅ Validé', '✅ Validé', '✅ Validé', '✅ Validé', '✅ Validé'],
-                'Opérateur': ['Robot-A3', 'OP-245', 'QC-12', 'Robot-B7', 'QC-08', 'LOG-34']
-            }
-            df_timeline = pd.DataFrame(timeline_data)
-            
-            # Visual timeline
-            fig = go.Figure()
-            
-            for i, row in df_timeline.iterrows():
-                fig.add_trace(go.Scatter(
-                    x=[i], y=[row['Étape']],
-                    mode='markers+text',
-                    marker=dict(size=30, color=ACTIA_GREEN, symbol='circle'),
-                    text=row['Date'].split()[1],
-                    textposition='top center',
-                    textfont=dict(size=12, color=ACTIA_GREY),
-                    showlegend=False
-                ))
-            
-            fig.add_trace(go.Scatter(
-                x=list(range(len(df_timeline))),
-                y=df_timeline['Étape'],
-                mode='lines',
-                line=dict(color=ACTIA_GREY, width=3),
-                showlegend=False
-            ))
-            
-            fig.update_layout(
-                height=400,
-                xaxis=dict(showgrid=False, showticklabels=False, zeroline=False),
-                yaxis=dict(showgrid=False),
-                plot_bgcolor='white',
-                margin=dict(l=20, r=20, t=20, b=20)
-            )
-            
-            st.plotly_chart(fig, use_container_width=True)
-            
-            st.dataframe(df_timeline, use_container_width=True, hide_index=True)
-        
-        with col2:
-            st.markdown(f"<h3 style='color: {ACTIA_GREEN};'>🔩 Composants Utilisés</h3>", unsafe_allow_html=True)
-            
-            components = {
-                'Composant': ['PCB-2847-A', 'Resistor-R45', 'Capacitor-C89', 
-                             'IC-Chip-2024', 'Connector-X12'],
-                'Fournisseur': ['OMRON', 'Vishay', 'Murata', 'NXP', 'TE Connectivity'],
-                'Origine': ['🇯🇵 Japon', '🇩🇪 Allemagne', '🇯🇵 Japon', '🇳🇱 Pays-Bas', '🇺🇸 USA'],
-                'Prix': ['€45.20', '€0.15', '€0.30', '€28.50', '€5.80']
-            }
-            df_components = pd.DataFrame(components)
-            st.dataframe(df_components, use_container_width=True, hide_index=True)
-            
-            st.markdown(f"""
-            <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 15px; 
-                        border-radius: 10px; margin-top: 20px;'>
-                <h4 style='color: {ACTIA_GREY};'>💰 Coût Total Composants</h4>
-                <h2 style='color: {ACTIA_GREEN};'>€79.95</h2>
-                <p style='color: {ACTIA_GREY};'>Marge: 42%</p>
-            </div>
-            """, unsafe_allow_html=True)
+        st.markdown(f"""
+        <div style='background-color: white; padding: 15px; border-radius: 10px; 
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
+            <h4 style='color: {ACTIA_GREY}; margin: 0;'>🔍 Root Causes Detected</h4>
+            <ul style='color: {ACTIA_GREY}; margin: 10px 0;'>
+                <li>Availability: -12%</li>
+                <li>Changeover time: +18%</li>
+                <li>Material delay: 3 incidents</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
 
-# AI Conversational Page
-elif page == "🤖 IA Conversationnelle":
+# Note: Pages IA Conversationnelle et Prédictions fusionnées dans OEE & ML
+
+# Marketplace Page (refaite)
+elif page == "🌐 Marketplace":
     st.markdown(f"<h1 style='color: {ACTIA_GREY};'>🤖 Assistant IA Snowflake Cortex</h1>", unsafe_allow_html=True)
     st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>Interrogez vos données en langage naturel</p>", unsafe_allow_html=True)
     
