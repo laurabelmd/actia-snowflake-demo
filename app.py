@@ -78,123 +78,122 @@ st.markdown(f"""
 
 # Sidebar navigation
 st.sidebar.image("actia_logo.svg", use_column_width=True)
-st.sidebar.markdown(f"<h2 style='color: {ACTIA_GREEN};'>🎯 Demo Navigation</h2>", unsafe_allow_html=True)
+st.sidebar.markdown(f"<h2 style='color: {ACTIA_GREEN};'>📋 Agenda</h2>", unsafe_allow_html=True)
 
 page = st.sidebar.radio(
     "Sections",
-    ["🏠 Accueil", "🤖 Cortex Analyst", "🏭 Traçabilité", "🤖 IA Conversationnelle", 
-     "📊 Prédictions", "🌐 Marketplace", "📄 Document AI"],
+    ["🏠 Accueil", "🤖 IA Accessible", "🏭 OEE & ML", "🌐 Marketplace", "📄 Tout est Données"],
     label_visibility="collapsed"
 )
 
 # Home Page
 if page == "🏠 Accueil":
     st.markdown(f"<h1 style='text-align: center; color: {ACTIA_GREY};'>❄️ Snowflake x Actia</h1>", unsafe_allow_html=True)
-    st.markdown(f"<h3 style='text-align: center; color: {ACTIA_GREEN};'>Transformation Digitale & IA pour la Compétitivité</h3>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='text-align: center; color: {ACTIA_GREEN};'>L'IA au Service des Gens et des Décisions</h3>", unsafe_allow_html=True)
     
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # Key challenge visualization
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        st.markdown(f"""
-        <div class='metric-card'>
-            <h2 style='color: white;'>🚨 L'Urgence</h2>
-            <h1 style='color: {ACTIA_GREEN};'>+24%</h1>
-            <p>Inflation salariale Europe</p>
-            <h1 style='color: {ACTIA_GREEN};'>+70%</h1>
-            <p>Inflation Tunisie</p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown(f"""
-        <div class='metric-card'>
-            <h2 style='color: white;'>🇨🇳 La Concurrence</h2>
-            <h1 style='color: {ACTIA_GREEN};'>196 vs 100</h1>
-            <p>Coût France vs Chine</p>
-            <h3 style='color: white; margin-top: 20px;'>Guerre économique</h3>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col3:
-        st.markdown(f"""
-        <div class='metric-card'>
-            <h2 style='color: white;'>💡 La Solution</h2>
-            <h1 style='color: {ACTIA_GREEN};'>IA</h1>
-            <p>Seule protection viable</p>
-            <h3 style='color: white; margin-top: 20px;'>Innovation + Données</h3>
-        </div>
-        """, unsafe_allow_html=True)
+    # Intro humaniste
+    st.markdown(f"""
+    <div style='background-color: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
+        <h2 style='color: {ACTIA_GREY}; text-align: center;'>👥 Derrière la Donnée, il y a des Gens</h2>
+        <p style='font-size: 18px; color: {ACTIA_GREY}; text-align: center; line-height: 1.8;'>
+            Je suis allée sur vos sites, j'ai rencontré plein de gens. Pourquoi je commence avec ces banalités ? 
+            <br><br>
+            <strong>Parce que derrière la donnée, il y a des gens pour prendre des décisions.</strong>
+            <br><br>
+            Des gens qui voient leur environnement se bouleverser rapidement par l'émergence de l'IA.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("<br><br>", unsafe_allow_html=True)
     
-    # 4 Key objectives
-    st.markdown(f"<h2 style='color: {ACTIA_GREY};'>🎯 Les 4 Enjeux Stratégiques</h2>", unsafe_allow_html=True)
+    # Agenda de la demo
+    st.markdown(f"<h2 style='color: {ACTIA_GREY}; text-align: center;'>📋 Agenda de la Démo</h2>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
     
     col1, col2 = st.columns(2)
     
     with col1:
         st.markdown(f"""
-        <div style='background-color: white; padding: 20px; border-radius: 10px; border-left: 5px solid {ACTIA_GREEN}; margin: 10px 0;'>
-            <h3 style='color: {ACTIA_GREY};'>1️⃣ Expérience Client</h3>
-            <ul>
-                <li>Services connectés (MCO/MCS)</li>
-                <li>Sécurité Supply Chain</li>
-                <li>Agilité & Proactivité</li>
-            </ul>
+        <div style='background: linear-gradient(135deg, {ACTIA_GREEN} 0%, {ACTIA_DARK_GREEN} 100%); 
+                    padding: 25px; border-radius: 15px; margin: 10px 0; height: 200px;'>
+            <h3 style='color: white; margin: 0;'>1️⃣ Rendre l'IA Accessible</h3>
+            <p style='color: white; margin-top: 15px; font-size: 16px;'>
+                • QR code<br>
+                • Parler à l'IA en langage naturel<br>
+                • Tous les LLM (GPT, DeepSeek...)<br>
+                • Sécurité & confidentialité garanties
+            </p>
         </div>
         """, unsafe_allow_html=True)
         
         st.markdown(f"""
-        <div style='background-color: white; padding: 20px; border-radius: 10px; border-left: 5px solid {ACTIA_GREEN}; margin: 10px 0;'>
-            <h3 style='color: {ACTIA_GREY};'>3️⃣ Culture Produit</h3>
-            <ul>
-                <li>Fin de la sur-ingénierie</li>
-                <li>Performance financière</li>
-                <li>Innovation profitable</li>
-            </ul>
+        <div style='background: linear-gradient(135deg, {ACTIA_GREY} 0%, #8B8B8B 100%); 
+                    padding: 25px; border-radius: 15px; margin: 10px 0; height: 200px;'>
+            <h3 style='color: white; margin: 0;'>3️⃣ Vendre vos Données</h3>
+            <p style='color: white; margin-top: 15px; font-size: 16px;'>
+                • Enrichissement externe (S&P 500, météo)<br>
+                • Meilleurs forecasts<br>
+                • Marketplace pour monétiser<br>
+                • Nouveaux flux de revenus
+            </p>
         </div>
         """, unsafe_allow_html=True)
     
     with col2:
         st.markdown(f"""
-        <div style='background-color: white; padding: 20px; border-radius: 10px; border-left: 5px solid {ACTIA_GREY}; margin: 10px 0;'>
-            <h3 style='color: {ACTIA_GREY};'>2️⃣ Compétitivité</h3>
-            <ul>
-                <li>Efficience & Productivité</li>
-                <li>IA comme levier central</li>
-                <li>Robustesse des processus</li>
-            </ul>
+        <div style='background: linear-gradient(135deg, {ACTIA_GREY} 0%, {ACTIA_DARK_GREEN} 100%); 
+                    padding: 25px; border-radius: 15px; margin: 10px 0; height: 200px;'>
+            <h3 style='color: white; margin: 0;'>2️⃣ L'IA c'est aussi le ML</h3>
+            <p style='color: white; margin-top: 15px; font-size: 16px;'>
+                • Dashboard OEE temps réel<br>
+                • Prédictions & forecasting<br>
+                • Détection d'anomalies<br>
+                • Optimisation production
+            </p>
         </div>
         """, unsafe_allow_html=True)
         
         st.markdown(f"""
-        <div style='background-color: white; padding: 20px; border-radius: 10px; border-left: 5px solid {ACTIA_GREY}; margin: 10px 0;'>
-            <h3 style='color: {ACTIA_GREY};'>4️⃣ Market Relevance</h3>
-            <ul>
-                <li>Valorisation services & data</li>
-                <li>Vitesse d'innovation</li>
-                <li>Software Defined Vehicle</li>
-            </ul>
+        <div style='background: linear-gradient(135deg, {ACTIA_GREEN} 0%, #1E8B57 100%); 
+                    padding: 25px; border-radius: 15px; margin: 10px 0; height: 200px;'>
+            <h3 style='color: white; margin: 0;'>4️⃣ Tout est Données</h3>
+            <p style='color: white; margin-top: 15px; font-size: 16px;'>
+                • PDF → Excel automatique<br>
+                • Image → Texte<br>
+                • Détection d'anomalies visuelles<br>
+                • Énorme potentiel non structuré
+            </p>
         </div>
         """, unsafe_allow_html=True)
     
-    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<br><br>", unsafe_allow_html=True)
     
-    # Demo promise
+    # Footer EBC 2025
     st.markdown(f"""
-    <div style='background: linear-gradient(135deg, {ACTIA_GREEN} 0%, {ACTIA_DARK_GREEN} 100%); 
-                padding: 30px; border-radius: 15px; text-align: center;'>
-        <h2 style='color: white;'>🚀 Aujourd'hui, nous allons vous montrer...</h2>
-        <h3 style='color: white;'>Comment Snowflake + IA peut protéger vos marges et créer de nouveaux flux de revenus</h3>
+    <div style='text-align: center; padding: 20px; background-color: {ACTIA_GREY}; 
+                border-radius: 10px; color: white; margin-top: 40px;'>
+        <p style='margin: 0; font-size: 18px; font-weight: bold;'>EBC 2025</p>
+        <p style='margin: 5px 0 0 0; font-size: 14px;'>❄️ Powered by Snowflake</p>
     </div>
     """, unsafe_allow_html=True)
 
-# Cortex Analyst QR Code Page
-elif page == "🤖 Cortex Analyst":
-    st.markdown(f"<h1 style='color: {ACTIA_GREY};'>🤖 Actia Cortex Analyst</h1>", unsafe_allow_html=True)
+# IA Accessible Page
+elif page == "🤖 IA Accessible":
+    st.markdown(f"<h1 style='color: {ACTIA_GREY};'>🤖 Rendre l'IA Accessible</h1>", unsafe_allow_html=True)
+    
+    st.markdown(f"""
+    <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 20px; border-radius: 10px; margin-bottom: 30px;'>
+        <h3 style='color: {ACTIA_GREY}; margin: 0;'>📚 Snowflake: Le catalogue de LLM le plus fourni</h3>
+        <p style='color: {ACTIA_GREY}; margin-top: 10px; font-size: 16px;'>
+            Tous les LLM que vous entendez dans la presse (GPT, DeepSeek, Mistral, Claude...) 
+            sont disponibles dans Snowflake en toute sécurité, <strong>sans que vos données soient réutilisées 
+            pour de l'entraînement ou à des fins commerciales</strong>.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
     col1, col2 = st.columns([1, 1])
     
@@ -227,11 +226,10 @@ elif page == "🤖 Cortex Analyst":
                 <li><strong>💬 Poser des questions en langage naturel</strong><br>"Quel est le taux de qualité ce mois-ci?"</li>
                 <li><strong>🔍 Analyses instantanées</strong><br>Tendances, prévisions, recommandations</li>
                 <li><strong>📈 Graphiques interactifs</strong><br>Production 7 jours, qualité par station</li>
+                <li><strong>🌍 Traduction instantanée</strong><br>Dashboard disponible en plusieurs langues</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
-        
-        st.info("💡 **Pour démo locale**: Mettez à jour l'IP ci-dessus (ligne 213) avec votre adresse locale")
     
     with col2:
         st.markdown(f"<h3 style='color: {ACTIA_GREEN};'>👀 Aperçu Cortex Analyst</h3>", unsafe_allow_html=True)
