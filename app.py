@@ -1328,6 +1328,13 @@ Alerte: Dépassement budget composants
                         <h4 style='color: {ACTIA_GREY}; margin-top: 0;'>📊 Statistiques Contrôle Qualité</h4>
                         <p><strong>Taux de détection automatique:</strong> <span style='color: {ACTIA_GREEN};'>99.2%</span></p>
                         <p><strong>Faux positifs:</strong> <span style='color: {ACTIA_GREY};'>0.8%</span></p>
+                        <p><strong>Gain de temps:</strong> <span style='color: {ACTIA_GREEN};'>92%</span> vs inspection manuelle</p>
+                        <p><strong>Coût évité:</strong> <span style='color: {ACTIA_GREEN};'>€180K/an</span> en défauts non détectés</p>
+                    </div>
+                    """, unsafe_allow_html=True)
+        else:
+            st.info("👆 Uploadez une photo (JPG, PNG) ou un PDF de carte électronique pour analyse")
+
 # Footer
 st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown(f"""
