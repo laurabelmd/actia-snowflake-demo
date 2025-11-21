@@ -160,10 +160,11 @@ st.markdown(f"""
         margin: 10px 0;
     }}
     .chat-message {{
-        padding: 15px;
-        border-radius: 15px;
-        margin: 10px 0;
-        max-width: 80%;
+        padding: 12px;
+        border-radius: 10px;
+        margin: 8px 0;
+        max-width: 85%;
+        font-size: 14px;
     }}
     .user-message {{
         background-color: {ACTIA_GREEN};
@@ -178,19 +179,20 @@ st.markdown(f"""
     }}
     .dashboard-metric {{
         background: linear-gradient(135deg, {ACTIA_GREY} 0%, {ACTIA_DARK_GREEN} 100%);
-        padding: 20px;
-        border-radius: 15px;
+        padding: 15px;
+        border-radius: 12px;
         color: white;
         text-align: center;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        margin: 5px;
     }}
     .metric-value {{
-        font-size: 42px;
+        font-size: 36px;
         font-weight: bold;
-        margin: 10px 0;
+        margin: 8px 0;
     }}
     .metric-label {{
-        font-size: 16px;
+        font-size: 14px;
         opacity: 0.9;
     }}
     h1, h2, h3 {{
@@ -199,15 +201,16 @@ st.markdown(f"""
     .stTextInput>div>div>input {{
         border-radius: 10px;
     }}
-    /* Chat container styling */
+    /* Chat container styling - optimisé mobile */
     .chat-container {{
         background: white;
-        border-radius: 15px;
-        padding: 20px;
-        height: 500px;
+        border-radius: 10px;
+        padding: 15px;
+        min-height: 200px;
+        max-height: 400px;
         overflow-y: auto;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }}
     </style>
 """, unsafe_allow_html=True)
@@ -402,9 +405,9 @@ with chat_container:
     
     if len(st.session_state.messages) == 0:
         st.markdown(f"""
-        <div style='text-align: center; padding: 50px; color: {ACTIA_GREY};'>
-            <h3>👋 Bienvenue!</h3>
-            <p>Posez-moi des questions sur vos données de production, qualité, ou traçabilité.</p>
+        <div style='text-align: center; padding: 20px; color: {ACTIA_GREY};'>
+            <h3 style='font-size: 18px; margin: 0;'>👋 Bienvenue!</h3>
+            <p style='font-size: 14px; margin: 10px 0 0 0;'>Posez vos questions sur la production, qualité ou traçabilité.</p>
         </div>
         """, unsafe_allow_html=True)
     
