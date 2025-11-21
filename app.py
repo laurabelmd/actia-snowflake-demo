@@ -6,9 +6,6 @@ from datetime import datetime, timedelta
 import time
 import random
 import numpy as np
-import base64
-from PIL import Image
-import io
 
 # Actia Colors (from official logo)
 ACTIA_GREEN = "#009653"  # Actia green (official)
@@ -129,8 +126,8 @@ if page == "🏠 Accueil":
                 • Tous les LLM (GPT, DeepSeek...)<br>
                 • Sécurité & confidentialité garanties
             </p>
-    </div>
-    """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
         
         st.markdown(f"""
         <div style='background: linear-gradient(135deg, {ACTIA_GREY} 0%, #8B8B8B 100%); 
@@ -142,8 +139,8 @@ if page == "🏠 Accueil":
                 • Marketplace pour monétiser<br>
                 • Nouveaux flux de revenus
             </p>
-    </div>
-    """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
     
     with col2:
         st.markdown(f"""
@@ -156,8 +153,8 @@ if page == "🏠 Accueil":
                 • Détection d'anomalies<br>
                 • Optimisation production
             </p>
-    </div>
-    """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
         
         st.markdown(f"""
         <div style='background: linear-gradient(135deg, {ACTIA_GREEN} 0%, #1E8B57 100%); 
@@ -169,8 +166,8 @@ if page == "🏠 Accueil":
                 • Détection d'anomalies visuelles<br>
                 • Énorme potentiel non structuré
             </p>
-    </div>
-    """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
     
     st.markdown("<br><br>", unsafe_allow_html=True)
     
@@ -206,8 +203,8 @@ elif page == "🤖 IA Accessible":
             <h2>✨ Scannez le QR Code</h2>
             <p style='font-size: 18px;'>Accédez à Cortex Analyst sur votre téléphone</p>
             <p style='font-size: 16px; margin-top: 10px;'>Dashboard temps réel + IA conversationnelle</p>
-    </div>
-    """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
         
         # Generate QR code - Update this URL after deploying cortex_analyst_app.py
         st.markdown("<br>", unsafe_allow_html=True)
@@ -231,8 +228,8 @@ elif page == "🤖 IA Accessible":
                 <li><strong>📈 Graphiques interactifs</strong><br>Production 7 jours, qualité par station</li>
                 <li><strong>🌍 Traduction instantanée</strong><br>Dashboard disponible en plusieurs langues</li>
             </ul>
-    </div>
-    """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
     
     with col2:
         st.markdown(f"<h3 style='color: {ACTIA_GREEN};'>👀 Aperçu Cortex Analyst</h3>", unsafe_allow_html=True)
@@ -245,7 +242,7 @@ elif page == "🤖 IA Accessible":
                 <div style='text-align: center; margin-bottom: 20px;'>
                     <h2 style='color: {ACTIA_GREY}; margin: 0;'>🤖 Actia Cortex Analyst</h2>
                     <p style='color: {ACTIA_GREY}; font-size: 14px;'>IA pour vos données de production</p>
-    </div>
+                </div>
                 
                 <!-- Dashboard Metrics -->
                 <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0;'>
@@ -253,33 +250,33 @@ elif page == "🤖 IA Accessible":
                                 color: white; padding: 15px; border-radius: 10px; text-align: center;'>
                         <div style='font-size: 12px;'>🏭 Production</div>
                         <div style='font-size: 24px; font-weight: bold;'>1,247</div>
-    </div>
+                    </div>
                     <div style='background: linear-gradient(135deg, {ACTIA_GREY} 0%, {ACTIA_DARK_GREEN} 100%); 
                                 color: white; padding: 15px; border-radius: 10px; text-align: center;'>
                         <div style='font-size: 12px;'>✅ Qualité</div>
                         <div style='font-size: 24px; font-weight: bold;'>98.4%</div>
-    </div>
-    </div>
+                    </div>
+                </div>
                 
                 <!-- Chart placeholder -->
                 <div style='background-color: #f5f5f5; padding: 15px; border-radius: 10px; margin: 15px 0;'>
                     <div style='color: {ACTIA_GREY}; font-size: 14px; font-weight: bold; margin-bottom: 10px;'>
                         📈 Production (7 jours)
-    </div>
+                    </div>
                     <div style='height: 100px; background: linear-gradient(to top, {ACTIA_GREEN}40 0%, {ACTIA_GREEN}20 100%); 
                                 border-radius: 5px; position: relative;'>
                         <svg style='width: 100%; height: 100%;' viewBox='0 0 100 100' preserveAspectRatio='none'>
                             <polyline points='0,80 20,70 40,60 60,55 80,50 100,45' 
                                       style='fill: none; stroke: {ACTIA_GREEN}; stroke-width: 2;' />
                         </svg>
-    </div>
-    </div>
+                    </div>
+                </div>
                 
                 <!-- Chat section -->
                 <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 12px; border-radius: 10px; margin: 15px 0;'>
                     <div style='color: {ACTIA_GREY}; font-size: 13px; font-weight: bold; margin-bottom: 8px;'>
                         💬 Posez vos questions
-    </div>
+                    </div>
                     <div style='display: flex; gap: 5px; flex-wrap: wrap;'>
                         <span style='background: {ACTIA_GREEN}; color: white; padding: 5px 10px; 
                                      border-radius: 15px; font-size: 11px;'>📊 Qualité?</span>
@@ -287,8 +284,8 @@ elif page == "🤖 IA Accessible":
                                      border-radius: 15px; font-size: 11px;'>🔍 Problèmes?</span>
                         <span style='background: {ACTIA_GREEN}; color: white; padding: 5px 10px; 
                                      border-radius: 15px; font-size: 11px;'>📈 Tendance?</span>
-    </div>
-    </div>
+                    </div>
+                </div>
                 
                 <!-- Chat example -->
                 <div style='background-color: white; border: 2px solid {ACTIA_LIGHT_GREY}; 
@@ -299,23 +296,23 @@ elif page == "🤖 IA Accessible":
                         Évolution: +0.8% vs mois dernier<br>
                         Station à surveiller: Intégration
                     </p>
-    </div>
+                </div>
                 
                 <div style='text-align: center; margin-top: 15px; padding-top: 15px; 
                             border-top: 1px solid {ACTIA_LIGHT_GREY};'>
                     <p style='color: {ACTIA_GREY}; font-size: 11px;'>❄️ Powered by Snowflake</p>
-    </div>
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
         
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown(f"""
         <div style='background-color: {ACTIA_GREEN}; color: white; padding: 20px; border-radius: 15px; text-align: center;'>
             <h3 style='margin: 0;'>🚀 Lancez Cortex Analyst</h3>
             <p style='margin: 10px 0 0 0;'>Scanner le QR code ou lancer localement sur le port 8502</p>
-    </div>
-    """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
 
 # ML Page (fusion Traçabilité + Prédictions)
 elif page == "🏭 ML":
@@ -333,9 +330,9 @@ elif page == "🏭 ML":
             <strong>REASON:</strong> Current production trend shows ability to produce 51 units vs 144 needed units, 
             with OEE at 72% and Run Rate at 50%, indicating severe shortfall of 93 units by end of shift.
         </p>
-        </div>
-        """, unsafe_allow_html=True)
-        
+    </div>
+    """, unsafe_allow_html=True)
+    
     # OEE Metrics Chart (inspired by screenshot - multi-line graph)
     st.markdown(f"<h3 style='color: {ACTIA_GREY};'>📈 OEE Metrics - Live Monitoring</h3>", unsafe_allow_html=True)
     
@@ -380,7 +377,7 @@ elif page == "🏭 ML":
         yaxis_title="OEE (%)",
         yaxis=dict(range=[50, 105]),
         hovermode='x unified',
-                plot_bgcolor='white',
+        plot_bgcolor='white',
         legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="center", x=0.5)
     )
     
@@ -392,14 +389,14 @@ elif page == "🏭 ML":
     col_chat, col_info = st.columns([3, 2])
     
     with col_chat:
-            st.markdown(f"""
+        st.markdown(f"""
         <div style='background-color: white; padding: 20px; border-radius: 15px; 
                     box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
             <h3 style='color: {ACTIA_GREEN}; margin-top: 0;'>💬 Ask the AI</h3>
             <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 15px; border-radius: 10px; margin: 10px 0;'>
                 <strong style='color: {ACTIA_GREY};'>Prompt:</strong>
                 <p style='color: {ACTIA_GREY}; margin: 5px 0;'>Why did OEE drop?</p>
-    </div>
+            </div>
             <div style='background-color: white; border: 2px solid {ACTIA_LIGHT_GREY}; 
                         padding: 15px; border-radius: 10px;'>
                 <strong style='color: {ACTIA_GREEN};'>Response:</strong>
@@ -425,10 +422,10 @@ elif page == "🏭 ML":
                     • Idle time<br>
                     • Material shortages
                 </p>
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
-
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
     with col_info:
         st.markdown(f"<h3 style='color: {ACTIA_GREEN};'>🎯 ML Predictions</h3>", unsafe_allow_html=True)
         
@@ -438,8 +435,8 @@ elif page == "🏭 ML":
             <h4 style='color: {ACTIA_GREY}; margin: 0;'>Forecast Next 4 Hours</h4>
             <h2 style='color: {ACTIA_GREEN}; margin: 10px 0;'>78% OEE</h2>
             <p style='color: {ACTIA_GREY}; margin: 0;'>Confidence: 92%</p>
-    </div>
-    """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
         
         st.markdown(f"""
         <div style='background-color: #fff3cd; border-left: 5px solid #ffc107; 
@@ -448,8 +445,8 @@ elif page == "🏭 ML":
             <p style='color: #856404; margin: 10px 0 0 0;'>
                 Station RL-03 predicted to drop below 75% within 2 hours
             </p>
-    </div>
-    """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
         
         st.markdown(f"""
         <div style='background-color: white; padding: 15px; border-radius: 10px; 
@@ -460,8 +457,8 @@ elif page == "🏭 ML":
                 <li>Changeover time: +18%</li>
                 <li>Material delay: 3 incidents</li>
             </ul>
-    </div>
-    """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
 
 # Note: Pages IA Conversationnelle et Prédictions fusionnées dans OEE & ML
 
@@ -510,8 +507,8 @@ elif page == "📊 Prédictions":
                 <p>Précision: 94.3%</p>
                 <p>Données: 847 produits</p>
                 <p>Entraînement: 2019-2024</p>
-    </div>
-    """, unsafe_allow_html=True)
+            </div>
+            """, unsafe_allow_html=True)
             
             st.markdown(f"""
             <div style='background-color: white; padding: 20px; border-radius: 10px; 
@@ -522,8 +519,8 @@ elif page == "📊 Prédictions":
                 <p style='color: {ACTIA_GREY};'>Coût dev: €2.1M</p>
                 <p style='color: {ACTIA_GREY};'>ROI prédit: <span style='color: red;'>Négatif</span></p>
                 <p style='color: {ACTIA_GREY};'><strong>Action: Simplifier ou annuler</strong></p>
-    </div>
-    """, unsafe_allow_html=True)
+            </div>
+            """, unsafe_allow_html=True)
     
     # Tab 2: Shortage risk
     with tabs[1]:
@@ -577,8 +574,8 @@ elif page == "📊 Prédictions":
                 <p>Risque: 95%</p>
                 <p>Délai: 2 semaines</p>
                 <p><strong>Action immédiate</strong></p>
-    </div>
-    """, unsafe_allow_html=True)
+            </div>
+            """, unsafe_allow_html=True)
             
             st.markdown(f"""
             <div style='background-color: orange; color: white; padding: 20px; 
@@ -587,8 +584,8 @@ elif page == "📊 Prédictions":
                 <p><strong>PCB-Advanced</strong></p>
                 <p>Risque: 90%</p>
                 <p>Délai: 3 semaines</p>
-    </div>
-    """, unsafe_allow_html=True)
+            </div>
+            """, unsafe_allow_html=True)
             
             st.markdown(f"""
             <div style='background-color: {ACTIA_GREEN}; color: white; padding: 20px; 
@@ -596,8 +593,8 @@ elif page == "📊 Prédictions":
                 <h3>🟢 OK</h3>
                 <p>5 composants</p>
                 <p>Stock suffisant</p>
-    </div>
-    """, unsafe_allow_html=True)
+            </div>
+            """, unsafe_allow_html=True)
     
     # Tab 3: Sales forecast
     with tabs[2]:
@@ -664,7 +661,7 @@ elif page == "📊 Prédictions":
 elif page == "📄 Tout est Données":
     st.markdown(f"<h1 style='color: {ACTIA_GREY};'>📄 Tout est Données</h1>", unsafe_allow_html=True)
     st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>Énorme potentiel dans les données non structurées</p>", unsafe_allow_html=True)
-        
+    
     st.markdown(f"""
     <div style='background-color: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
         <h2 style='color: {ACTIA_GREY}; margin-top: 0;'>💡 80% des données d'entreprise sont non structurées</h2>
@@ -677,7 +674,7 @@ elif page == "📄 Tout est Données":
         </p>
     </div>
     """, unsafe_allow_html=True)
-        
+    
     st.markdown("<br><br>", unsafe_allow_html=True)
     
     # 3 tabs: PDF textuel, Photo, et Audio
@@ -687,10 +684,11 @@ elif page == "📄 Tout est Données":
     with tabs[0]:
         st.markdown(f"<h2 style='color: {ACTIA_GREY};'>📄 Analyse d'Écart et Coûts (Variance Analysis)</h2>", unsafe_allow_html=True)
         st.markdown(f"<p style='color: {ACTIA_GREY}; font-size: 16px;'>Convertissez automatiquement vos rapports PDF en données Excel exploitables</p>", unsafe_allow_html=True)
-            
+        
         st.markdown("<br>", unsafe_allow_html=True)
-                uploaded_pdf = st.file_uploader("📤 Glissez-déposez votre PDF ici", 
-        type=['pdf'], key='pdf_variance')
+        
+        uploaded_pdf = st.file_uploader("📤 Glissez-déposez votre PDF ici", 
+                                       type=['pdf'], key='pdf_variance')
         
         if uploaded_pdf:
             col_pdf1, col_pdf2 = st.columns([1, 1])
@@ -814,13 +812,13 @@ Alerte: Dépassement budget composants
                     st.image(uploaded_photo, caption="Carte électronique à analyser", use_container_width=True)
                 else:
                     # Pour PDF, afficher un placeholder
-            st.markdown(f"""
+                    st.markdown(f"""
                     <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 60px; text-align: center; border-radius: 10px;'>
                         <h3 style='color: {ACTIA_GREY};'>📄 PDF Chargé</h3>
                         <p style='color: {ACTIA_GREY};'>{uploaded_photo.name}</p>
                         <p style='color: {ACTIA_GREY};'>Taille: {uploaded_photo.size} bytes</p>
-            </div>
-            """, unsafe_allow_html=True)
+                    </div>
+                    """, unsafe_allow_html=True)
             
             with col_img2:
                 st.markdown(f"<h4 style='color: {ACTIA_GREEN};'>🤖 Analyse IA</h4>", unsafe_allow_html=True)
@@ -832,82 +830,59 @@ Alerte: Dépassement budget composants
                             time.sleep(0.02)
                             progress.progress(i + 1)
                     
-                    st.warning("⚠️ **Défaut détecté sur la carte EBB-Multi!**")
+                    st.warning("⚠️ **Défaut détecté sur la carte!**")
                     
-                    # Défaut identifié
+                    # Simuler un cercle rouge sur une zone
                     st.markdown(f"""
                     <div style='background-color: #fff3cd; border-left: 5px solid #ffc107; 
                                 padding: 20px; border-radius: 10px; margin: 15px 0;'>
-                        <h4 style='color: #856404; margin: 0;'>🔍 Défaut Identifié sur Carte Industrielle</h4>
+                        <h4 style='color: #856404; margin: 0;'>🔍 Défaut Identifié</h4>
                         <br>
                         <ul style='color: #856404; margin: 10px 0; line-height: 1.8;'>
-                            <li><strong>Carte:</strong> EBB-Multi (Carte industrielle Actia)</li>
-                            <li><strong>Type défaut:</strong> Soudure froide (Cold Solder Joint)</li>
-                            <li><strong>Localisation:</strong> Connecteur DB9 central</li>
-                            <li><strong>Composant:</strong> Pin 7 du connecteur</li>
+                            <li><strong>Type:</strong> Soudure froide (Cold Solder Joint)</li>
+                            <li><strong>Localisation:</strong> Zone C4 (coin supérieur droit)</li>
+                            <li><strong>Composant:</strong> Condensateur C47</li>
                             <li><strong>Sévérité:</strong> Critique (9/10)</li>
-                            <li><strong>Confiance IA:</strong> 96.8%</li>
+                            <li><strong>Confiance IA:</strong> 94.3%</li>
                             <li><strong>Action:</strong> ❌ Rejet - Reprise nécessaire</li>
                         </ul>
-    </div>
-    """, unsafe_allow_html=True)
+                    </div>
+                    """, unsafe_allow_html=True)
                     
-                    # Visualisation du défaut sur l'image réelle
+                    # Visualisation du défaut
                     st.markdown(f"<h5 style='color: {ACTIA_GREY};'>📍 Localisation Précise:</h5>", unsafe_allow_html=True)
-                    
-                    # Convertir l'image en base64 pour l'afficher en HTML
-                    if uploaded_photo.type.startswith('image'):
-                        image = Image.open(uploaded_photo)
-                        # Redimensionner si trop grande
-                        max_width = 600
-                        if image.width > max_width:
-                            ratio = max_width / image.width
-                            new_height = int(image.height * ratio)
-                            image = image.resize((max_width, new_height))
-                        
-                        # Convertir en base64
-                        buffered = io.BytesIO()
-                        image.save(buffered, format="PNG")
-                        img_str = base64.b64encode(buffered.getvalue()).decode()
-                        
-                        # Position du défaut (ajuster selon besoin: top %, left %)
-                        defect_top = "45%"  # Position verticale du défaut
-                        defect_left = "60%"  # Position horizontale du défaut
-                        
-                        st.markdown(f"""
-                        <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 20px; border-radius: 10px; text-align: center;'>
-                            <div style='position: relative; display: inline-block; max-width: 100%;'>
-                                <img src="data:image/png;base64,{img_str}" 
-                                     style='width: 100%; height: auto; border-radius: 10px;'>
-                                <div style='position: absolute; top: {defect_top}; left: {defect_left}; 
-                                            transform: translate(-50%, -50%);
-                                            width: 60px; height: 60px; 
-                                            border: 4px solid red; border-radius: 50%;
+                    st.markdown(f"""
+                    <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 20px; border-radius: 10px; text-align: center;'>
+                        <div style='position: relative; display: inline-block;'>
+                            <div style='width: 300px; height: 200px; background-color: #2d5016; 
+                                        border-radius: 5px; position: relative;'>
+                                <div style='position: absolute; top: 30px; right: 40px; 
+                                            width: 40px; height: 40px; 
+                                            border: 3px solid red; border-radius: 50%;
                                             animation: pulse 1.5s infinite;'></div>
-                                <div style='position: absolute; top: calc({defect_top} - 80px); left: {defect_left}; 
-                                            transform: translateX(-50%);
+                                <div style='position: absolute; top: 25px; right: 85px; 
                                             background-color: red; color: white; 
-                                            padding: 8px 12px; border-radius: 5px; font-size: 13px;
-                                            white-space: nowrap; font-weight: bold;'>
-                                    🔴 Défaut détecté
-    </div>
-    </div>
-                            <p style='color: {ACTIA_GREY}; margin-top: 15px; font-size: 14px;'>
-                                Carte EBB-Multi avec défaut localisé par IA
-                            </p>
-    </div>
-                        <style>
-                        @keyframes pulse {{
-                            0%, 100% {{ opacity: 1; transform: translate(-50%, -50%) scale(1); }}
-                            50% {{ opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }}
-                        }}
-                        </style>
-    """, unsafe_allow_html=True)
-
+                                            padding: 5px 10px; border-radius: 5px; font-size: 12px;'>
+                                    Zone C4 - Défaut détecté
+                                </div>
+                            </div>
+                        </div>
+                        <p style='color: {ACTIA_GREY}; margin-top: 10px; font-size: 14px;'>
+                            Représentation schématique de la carte avec défaut marqué en rouge
+                        </p>
+                    </div>
+                    <style>
+                    @keyframes pulse {{
+                        0%, 100% {{ opacity: 1; }}
+                        50% {{ opacity: 0.3; }}
+                    }}
+                    </style>
+                    """, unsafe_allow_html=True)
+                    
                     st.markdown("<br>", unsafe_allow_html=True)
-    
+                    
                     # Stats
-    st.markdown(f"""
+                    st.markdown(f"""
                     <div style='background-color: white; padding: 20px; border-radius: 10px; 
                                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
                         <h4 style='color: {ACTIA_GREY}; margin-top: 0;'>📊 Statistiques Contrôle Qualité</h4>
@@ -915,8 +890,8 @@ Alerte: Dépassement budget composants
                         <p><strong>Faux positifs:</strong> <span style='color: {ACTIA_GREY};'>0.8%</span></p>
                         <p><strong>Gain de temps:</strong> <span style='color: {ACTIA_GREEN};'>92%</span> vs inspection manuelle</p>
                         <p><strong>Coût évité:</strong> <span style='color: {ACTIA_GREEN};'>€180K/an</span> en défauts non détectés</p>
-    </div>
-    """, unsafe_allow_html=True)
+                    </div>
+                    """, unsafe_allow_html=True)
         else:
             st.info("👆 Uploadez une photo (JPG, PNG) ou un PDF de carte électronique pour analyse")
     
@@ -924,9 +899,9 @@ Alerte: Dépassement budget composants
     with tabs[2]:
         st.markdown(f"<h2 style='color: {ACTIA_GREY};'>🎤 Audio → Insights (Transcription)</h2>", unsafe_allow_html=True)
         st.markdown(f"<p style='color: {ACTIA_GREY}; font-size: 16px;'>Analysez vos enregistrements vocaux et réunions</p>", unsafe_allow_html=True)
-    
-    st.markdown("<br>", unsafe_allow_html=True)
-    
+        
+        st.markdown("<br>", unsafe_allow_html=True)
+        
         uploaded_audio_pdf = st.file_uploader("📤 Glissez-déposez votre PDF avec transcription audio", 
                                              type=['pdf'], key='audio_transcript')
         
@@ -973,8 +948,8 @@ Marie: "Oui, j'envoie l'alerte qualité maintenant."
                 if st.button("🚀 Extraire Insights", key='analyze_transcript', use_container_width=True):
                     with st.spinner("🔍 Analyse IA du contenu..."):
                         progress = st.progress(0)
-                    for i in range(100):
-                        time.sleep(0.02)
+                        for i in range(100):
+                            time.sleep(0.02)
                             progress.progress(i + 1)
                     
                     st.success("✅ Insights extraits avec succès!")
@@ -992,29 +967,29 @@ Marie: "Oui, j'envoie l'alerte qualité maintenant."
                             <li><strong>Unités à retester:</strong> 200 unités</li>
                             <li><strong>Coût estimé:</strong> €3,200 si défauts non détectés</li>
                         </ul>
-    </div>
-    """, unsafe_allow_html=True)
+                    </div>
+                    """, unsafe_allow_html=True)
                     
                     st.markdown(f"<h5 style='color: {ACTIA_GREY}; margin-top: 25px;'>📊 Actions Automatiques Déclenchées:</h5>", unsafe_allow_html=True)
                     
                     col_a1, col_a2 = st.columns(2)
                     with col_a1:
-                    st.markdown(f"""
+                        st.markdown(f"""
                         <div style='background-color: #e8f5e9; padding: 15px; border-radius: 10px; border-left: 4px solid {ACTIA_GREEN};'>
                             <strong style='color: {ACTIA_DARK_GREEN};'>✅ Ticket Qualité Créé</strong>
                             <p style='color: {ACTIA_GREY}; margin: 5px 0 0 0;'>#QA-2024-1142</p>
-                    </div>
-                    """, unsafe_allow_html=True)
+                        </div>
+                        """, unsafe_allow_html=True)
                     with col_a2:
-                    st.markdown(f"""
+                        st.markdown(f"""
                         <div style='background-color: #e8f5e9; padding: 15px; border-radius: 10px; border-left: 4px solid {ACTIA_GREEN};'>
                             <strong style='color: {ACTIA_DARK_GREEN};'>✅ Alerte Envoyée</strong>
                             <p style='color: {ACTIA_GREY}; margin: 5px 0 0 0;'>Équipe qualité notifiée</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-                
-                st.markdown("<br>", unsafe_allow_html=True)
-                
+                        </div>
+                        """, unsafe_allow_html=True)
+                    
+                    st.markdown("<br>", unsafe_allow_html=True)
+                    
                     # Métriques d'impact
                     col_m1, col_m2, col_m3 = st.columns(3)
                     with col_m1:
@@ -1027,16 +1002,16 @@ Marie: "Oui, j'envoie l'alerte qualité maintenant."
                     st.markdown("<br>", unsafe_allow_html=True)
                     
                     # Stats globales
-            st.markdown(f"""
-            <div style='background-color: white; padding: 20px; border-radius: 10px; 
+                    st.markdown(f"""
+                    <div style='background-color: white; padding: 20px; border-radius: 10px; 
                                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
                         <h4 style='color: {ACTIA_GREY}; margin-top: 0;'>💡 Bénéfices Analyse Audio/Transcription</h4>
                         <p><strong>Temps de traitement:</strong> <span style='color: {ACTIA_GREEN};'>2 minutes</span> vs 2h30 manuel</p>
                         <p><strong>Précision extraction:</strong> <span style='color: {ACTIA_GREEN};'>98.7%</span></p>
                         <p><strong>Actions automatiques:</strong> <span style='color: {ACTIA_GREEN};'>Tickets + Alertes</span></p>
                         <p><strong>Réduction des délais:</strong> <span style='color: {ACTIA_GREEN};'>95%</span> plus rapide</p>
-    </div>
-    """, unsafe_allow_html=True)
+                    </div>
+                    """, unsafe_allow_html=True)
         else:
             st.info("👆 Uploadez un PDF contenant une transcription audio pour analyse")
 
