@@ -688,7 +688,7 @@ elif page == "📄 Tout est Données":
         st.markdown(f"<h2 style='color: {ACTIA_GREY};'>📄 Analyse d'Écart et Coûts (Variance Analysis)</h2>", unsafe_allow_html=True)
         st.markdown(f"<p style='color: {ACTIA_GREY}; font-size: 16px;'>Convertissez automatiquement vos rapports PDF en données Excel exploitables</p>", unsafe_allow_html=True)
             
-            st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown("<br>", unsafe_allow_html=True)
             
         uploaded_pdf = st.file_uploader("📤 Glissez-déposez votre PDF ici", 
                                        type=['pdf'], key='pdf_variance')
