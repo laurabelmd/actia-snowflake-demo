@@ -215,17 +215,21 @@ st.markdown(f"""
 # Initialize session state for chat history
 if 'messages' not in st.session_state:
     st.session_state.messages = []
+if 'last_question' not in st.session_state:
+    st.session_state.last_question = ""
+if 'processing' not in st.session_state:
+    st.session_state.processing = False
 
-# Header with Actia branding
-col_logo, col_title = st.columns([2, 3])
+# Header avec Actia branding (compact pour mobile)
+col_logo, col_title = st.columns([1, 2])
 with col_logo:
-    st.image("actia_logo.svg", use_column_width=True)
+    st.image("actia_logo.svg", width=120)
 with col_title:
     st.markdown(f"""
     <div style='background: linear-gradient(135deg, {ACTIA_GREY} 0%, {ACTIA_DARK_GREEN} 100%); 
-                padding: 25px; border-radius: 15px; text-align: center;'>
-        <h1 style='color: white; margin: 0; font-size: 28px;'>🤖 Cortex Analyst</h1>
-        <p style='color: white; margin: 8px 0 0 0; font-size: 16px;'>Intelligence artificielle pour vos données de production</p>
+                padding: 15px; border-radius: 10px; text-align: center;'>
+        <h1 style='color: white; margin: 0; font-size: 22px;'>🤖 Cortex Analyst</h1>
+        <p style='color: white; margin: 5px 0 0 0; font-size: 13px;'>IA pour vos données</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -234,11 +238,11 @@ st.markdown("<br>", unsafe_allow_html=True)
 # Factory selector
 factory = st.selectbox("🏭 Sélectionner l'usine", ["Toulouse", "Tunis"], label_visibility="visible")
 
-# Dashboard Section
-st.markdown(f"<h2 style='color: {ACTIA_GREY}; margin-top: 30px;'>📊 Dashboard en Temps Réel</h2>", unsafe_allow_html=True)
+# Dashboard Section (optimisé mobile)
+st.markdown(f"<h2 style='color: {ACTIA_GREY}; margin-top: 20px; font-size: 24px;'>📊 Temps Réel</h2>", unsafe_allow_html=True)
 
-# Key Metrics
-col1, col2, col3, col4 = st.columns(4)
+# Key Metrics (2 colonnes pour mobile)
+col1, col2 = st.columns(2)
 
 with col1:
     production_today = random.randint(1200, 1300)
@@ -260,6 +264,9 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
 
+# Deuxième ligne de métriques
+col3, col4 = st.columns(2)
+
 with col3:
     efficiency = round(random.uniform(85, 95), 1)
     st.markdown(f"""
@@ -280,93 +287,112 @@ with col4:
     </div>
     """, unsafe_allow_html=True)
 
-# Production Chart
+# Production Charts (empilé verticalement pour mobile)
 st.markdown("<br>", unsafe_allow_html=True)
-col_chart1, col_chart2 = st.columns(2)
 
-with col_chart1:
-    st.markdown(f"<h3 style='color: {ACTIA_GREY};'>📈 Production (7 jours)</h3>", unsafe_allow_html=True)
-    dates = [(datetime.now() - timedelta(days=i)).strftime("%d/%m") for i in range(6, -1, -1)]
-    production = [random.randint(1100, 1350) for _ in range(7)]
-    
-    fig1 = go.Figure()
-    fig1.add_trace(go.Scatter(
-        x=dates,
-        y=production,
-        mode='lines+markers',
-        line=dict(color=ACTIA_GREEN, width=3),
-        marker=dict(size=10, color=ACTIA_GREEN),
-        fill='tozeroy',
-        fillcolor=f'rgba(139, 195, 74, 0.2)'
-    ))
-    fig1.update_layout(
-        height=250,
-        margin=dict(l=10, r=10, t=10, b=10),
-        plot_bgcolor='white',
-        xaxis=dict(showgrid=False),
-        yaxis=dict(showgrid=True, gridcolor='lightgray'),
-        showlegend=False
-    )
-    st.plotly_chart(fig1, use_container_width=True)
+# Chart 1: Production
+st.markdown(f"<h3 style='color: {ACTIA_GREY}; font-size: 20px;'>📈 Production (7 jours)</h3>", unsafe_allow_html=True)
+dates = [(datetime.now() - timedelta(days=i)).strftime("%d/%m") for i in range(6, -1, -1)]
+production = [random.randint(1100, 1350) for _ in range(7)]
 
-with col_chart2:
-    st.markdown(f"<h3 style='color: {ACTIA_GREY};'>🎯 Qualité par Station</h3>", unsafe_allow_html=True)
-    stations = ['Assemblage', 'Test Élec.', 'Intégration', 'Test Final']
-    quality_by_station = [99.2, 98.7, 97.8, 99.5]
-    
-    fig2 = go.Figure(go.Bar(
-        x=quality_by_station,
-        y=stations,
-        orientation='h',
-        marker=dict(color=ACTIA_GREEN),
-        text=[f'{q}%' for q in quality_by_station],
-        textposition='outside'
-    ))
-    fig2.update_layout(
-        height=250,
-        margin=dict(l=10, r=10, t=10, b=10),
-        plot_bgcolor='white',
-        xaxis=dict(range=[90, 100], showgrid=True, gridcolor='lightgray'),
-        yaxis=dict(showgrid=False),
-        showlegend=False
-    )
-    st.plotly_chart(fig2, use_container_width=True)
+fig1 = go.Figure()
+fig1.add_trace(go.Scatter(
+    x=dates,
+    y=production,
+    mode='lines+markers',
+    line=dict(color=ACTIA_GREEN, width=3),
+    marker=dict(size=10, color=ACTIA_GREEN),
+    fill='tozeroy',
+    fillcolor=f'rgba(139, 195, 74, 0.2)'
+))
+fig1.update_layout(
+    height=200,
+    margin=dict(l=10, r=10, t=10, b=10),
+    plot_bgcolor='white',
+    xaxis=dict(showgrid=False),
+    yaxis=dict(showgrid=True, gridcolor='lightgray'),
+    showlegend=False
+)
+st.plotly_chart(fig1, use_container_width=True)
 
-# Cortex Analyst Chat Section
-st.markdown(f"<h2 style='color: {ACTIA_GREY}; margin-top: 40px;'>💬 Interrogez vos données avec Cortex Analyst</h2>", unsafe_allow_html=True)
+# Chart 2: Qualité par station
+st.markdown(f"<h3 style='color: {ACTIA_GREY}; font-size: 20px;'>🎯 Qualité par Station</h3>", unsafe_allow_html=True)
+stations = ['Assemblage', 'Test Élec.', 'Intégration', 'Test Final']
+quality_by_station = [99.2, 98.7, 97.8, 99.5]
+
+fig2 = go.Figure(go.Bar(
+    x=quality_by_station,
+    y=stations,
+    orientation='h',
+    marker=dict(color=ACTIA_GREEN),
+    text=[f'{q}%' for q in quality_by_station],
+    textposition='outside'
+))
+fig2.update_layout(
+    height=200,
+    margin=dict(l=10, r=10, t=10, b=10),
+    plot_bgcolor='white',
+    xaxis=dict(range=[90, 100], showgrid=True, gridcolor='lightgray'),
+    yaxis=dict(showgrid=False),
+    showlegend=False
+)
+st.plotly_chart(fig2, use_container_width=True)
+
+# Cortex Analyst Chat Section (adapté mobile)
+st.markdown(f"<h2 style='color: {ACTIA_GREY}; margin-top: 30px; font-size: 22px;'>💬 Posez vos Questions</h2>", unsafe_allow_html=True)
 
 st.markdown(f"""
-<div style='background-color: {ACTIA_LIGHT_GREY}; padding: 15px; border-radius: 10px; margin-bottom: 20px;'>
-    <p style='color: {ACTIA_GREY}; margin: 0;'>
-        💡 <strong>Posez vos questions en langage naturel</strong> - Cortex Analyst analysera vos données de production et vous répondra.
+<div style='background-color: {ACTIA_LIGHT_GREY}; padding: 12px; border-radius: 8px; margin-bottom: 15px;'>
+    <p style='color: {ACTIA_GREY}; margin: 0; font-size: 14px;'>
+        💡 <strong>Langage naturel</strong> - L'IA analyse vos données
     </p>
 </div>
 """, unsafe_allow_html=True)
 
 # Predefined questions
 st.markdown(f"<p style='color: {ACTIA_GREY};'><strong>Questions suggérées:</strong></p>", unsafe_allow_html=True)
-col_q1, col_q2, col_q3 = st.columns(3)
+col_q1, col_q2 = st.columns(2)
 
 with col_q1:
-    if st.button("📊 Quel est le taux de qualité moyen ce mois-ci?"):
-        st.session_state.messages.append({
-            "role": "user",
-            "content": "Quel est le taux de qualité moyen ce mois-ci?"
-        })
+    if st.button("📊 Taux qualité"):
+        question = "Quel est le taux de qualité moyen ce mois-ci?"
+        if question != st.session_state.last_question:
+            st.session_state.last_question = question
+            st.session_state.messages.append({"role": "user", "content": question})
+            response = get_cortex_response(question, factory)
+            st.session_state.messages.append({"role": "assistant", "content": response})
+            st.rerun()
 
 with col_q2:
-    if st.button("🔍 Quels composants ont des problèmes?"):
-        st.session_state.messages.append({
-            "role": "user",
-            "content": "Quels composants ont des problèmes?"
-        })
+    if st.button("🔍 Composants"):
+        question = "Quels composants ont des problèmes?"
+        if question != st.session_state.last_question:
+            st.session_state.last_question = question
+            st.session_state.messages.append({"role": "user", "content": question})
+            response = get_cortex_response(question, factory)
+            st.session_state.messages.append({"role": "assistant", "content": response})
+            st.rerun()
 
+col_q3, col_q4 = st.columns(2)
 with col_q3:
-    if st.button("📈 Quelle est la tendance de production?"):
-        st.session_state.messages.append({
-            "role": "user",
-            "content": "Quelle est la tendance de production?"
-        })
+    if st.button("📈 Production"):
+        question = "Quelle est la tendance de production?"
+        if question != st.session_state.last_question:
+            st.session_state.last_question = question
+            st.session_state.messages.append({"role": "user", "content": question})
+            response = get_cortex_response(question, factory)
+            st.session_state.messages.append({"role": "assistant", "content": response})
+            st.rerun()
+
+with col_q4:
+    if st.button("🔮 Prévisions"):
+        question = "Quelles sont les prévisions pour la semaine prochaine?"
+        if question != st.session_state.last_question:
+            st.session_state.last_question = question
+            st.session_state.messages.append({"role": "user", "content": question})
+            response = get_cortex_response(question, factory)
+            st.session_state.messages.append({"role": "assistant", "content": response})
+            st.rerun()
 
 # Chat display area
 chat_container = st.container()
@@ -406,28 +432,31 @@ user_question = st.text_input(
     label_visibility="collapsed"
 )
 
-if user_question and user_question.strip():
-    # Check if this is a new question (not already in history)
-    if not st.session_state.messages or st.session_state.messages[-1]["content"] != user_question:
-        # Add user message
-        st.session_state.messages.append({
-            "role": "user",
-            "content": user_question
-        })
-        
-        # Simulate processing
-        with st.spinner("🤖 Cortex Analyst analyse vos données..."):
-            time.sleep(1.5)
-        
-        # Generate contextual response based on keywords
-        response = get_cortex_response(user_question, factory)
-        
-        st.session_state.messages.append({
-            "role": "assistant",
-            "content": response
-        })
-        
-        st.rerun()
+# Process the question only if it's new and not currently processing
+if user_question and user_question.strip() and user_question != st.session_state.last_question and not st.session_state.processing:
+    st.session_state.processing = True
+    st.session_state.last_question = user_question
+    
+    # Add user message
+    st.session_state.messages.append({
+        "role": "user",
+        "content": user_question
+    })
+    
+    # Simulate processing
+    with st.spinner("🤖 Cortex Analyst analyse vos données..."):
+        time.sleep(1.5)
+    
+    # Generate contextual response based on keywords
+    response = get_cortex_response(user_question, factory)
+    
+    st.session_state.messages.append({
+        "role": "assistant",
+        "content": response
+    })
+    
+    st.session_state.processing = False
+    st.rerun()
 
 # Recent Activity
 st.markdown(f"<h2 style='color: {ACTIA_GREY}; margin-top: 40px;'>📋 Activité Récente</h2>", unsafe_allow_html=True)
