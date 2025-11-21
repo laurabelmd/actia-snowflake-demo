@@ -82,7 +82,7 @@ st.sidebar.markdown(f"<h2 style='color: {ACTIA_GREEN};'>📋 Agenda</h2>", unsaf
 
 page = st.sidebar.radio(
     "Sections",
-    ["🏠 Accueil", "🤖 IA Accessible", "🏭 OEE & ML", "📄 Tout est Données"],
+    ["🏠 Accueil", "🤖 IA Accessible", "📄 Tout est Données", "🏭 ML"],
     label_visibility="collapsed"
 )
 
@@ -94,7 +94,7 @@ if page == "🏠 Accueil":
     st.markdown("<br>", unsafe_allow_html=True)
     
     # Intro humaniste
-    st.markdown(f"""
+        st.markdown(f"""
     <div style='background-color: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
         <h2 style='color: {ACTIA_GREY}; text-align: center;'>👥 Derrière la Donnée, il y a des Gens</h2>
         <p style='font-size: 18px; color: {ACTIA_GREY}; text-align: center; line-height: 1.8;'>
@@ -104,8 +104,8 @@ if page == "🏠 Accueil":
             <br><br>
             Des gens qui voient leur environnement se bouleverser rapidement par l'émergence de l'IA.
         </p>
-    </div>
-    """, unsafe_allow_html=True)
+        </div>
+        """, unsafe_allow_html=True)
     
     st.markdown("<br><br>", unsafe_allow_html=True)
     
@@ -250,19 +250,19 @@ elif page == "🤖 IA Accessible":
                                 color: white; padding: 15px; border-radius: 10px; text-align: center;'>
                         <div style='font-size: 12px;'>🏭 Production</div>
                         <div style='font-size: 24px; font-weight: bold;'>1,247</div>
-                    </div>
+                </div>
                     <div style='background: linear-gradient(135deg, {ACTIA_GREY} 0%, {ACTIA_DARK_GREEN} 100%); 
                                 color: white; padding: 15px; border-radius: 10px; text-align: center;'>
                         <div style='font-size: 12px;'>✅ Qualité</div>
                         <div style='font-size: 24px; font-weight: bold;'>98.4%</div>
-                    </div>
                 </div>
+            </div>
                 
                 <!-- Chart placeholder -->
                 <div style='background-color: #f5f5f5; padding: 15px; border-radius: 10px; margin: 15px 0;'>
                     <div style='color: {ACTIA_GREY}; font-size: 14px; font-weight: bold; margin-bottom: 10px;'>
                         📈 Production (7 jours)
-                    </div>
+        </div>
                     <div style='height: 100px; background: linear-gradient(to top, {ACTIA_GREEN}40 0%, {ACTIA_GREEN}20 100%); 
                                 border-radius: 5px; position: relative;'>
                         <svg style='width: 100%; height: 100%;' viewBox='0 0 100 100' preserveAspectRatio='none'>
@@ -314,15 +314,15 @@ elif page == "🤖 IA Accessible":
         </div>
         """, unsafe_allow_html=True)
 
-# OEE & ML Page (fusion Traçabilité + Prédictions)
-elif page == "🏭 OEE & ML":
-    st.markdown(f"<h1 style='color: {ACTIA_GREY};'>📊 OEE Monitoring & Machine Learning</h1>", unsafe_allow_html=True)
+# ML Page (fusion Traçabilité + Prédictions)
+elif page == "🏭 ML":
+    st.markdown(f"<h1 style='color: {ACTIA_GREY};'>📊 Machine Learning & OEE Monitoring</h1>", unsafe_allow_html=True)
     st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>L'IA c'est aussi le ML avec les forecasts</p>", unsafe_allow_html=True)
     
     st.markdown("<br>", unsafe_allow_html=True)
     
     # Status Alert (inspired by screenshot)
-    st.markdown(f"""
+        st.markdown(f"""
     <div style='background-color: #ffebee; border-left: 5px solid #f44336; 
                 padding: 20px; border-radius: 10px; margin-bottom: 20px;'>
         <h3 style='color: #d32f2f; margin: 0;'>🔴 STATUS: Critical - Only able to achieve 35% of remaining production needed</h3>
@@ -330,9 +330,9 @@ elif page == "🏭 OEE & ML":
             <strong>REASON:</strong> Current production trend shows ability to produce 51 units vs 144 needed units, 
             with OEE at 72% and Run Rate at 50%, indicating severe shortfall of 93 units by end of shift.
         </p>
-    </div>
-    """, unsafe_allow_html=True)
-    
+        </div>
+        """, unsafe_allow_html=True)
+        
     # OEE Metrics Chart (inspired by screenshot - multi-line graph)
     st.markdown(f"<h3 style='color: {ACTIA_GREY};'>📈 OEE Metrics - Live Monitoring</h3>", unsafe_allow_html=True)
     
@@ -377,7 +377,7 @@ elif page == "🏭 OEE & ML":
         yaxis_title="OEE (%)",
         yaxis=dict(range=[50, 105]),
         hovermode='x unified',
-        plot_bgcolor='white',
+                plot_bgcolor='white',
         legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="center", x=0.5)
     )
     
@@ -389,7 +389,7 @@ elif page == "🏭 OEE & ML":
     col_chat, col_info = st.columns([3, 2])
     
     with col_chat:
-        st.markdown(f"""
+            st.markdown(f"""
         <div style='background-color: white; padding: 20px; border-radius: 15px; 
                     box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
             <h3 style='color: {ACTIA_GREEN}; margin-top: 0;'>💬 Ask the AI</h3>
@@ -423,9 +423,9 @@ elif page == "🏭 OEE & ML":
                     • Material shortages
                 </p>
             </div>
-        </div>
-        """, unsafe_allow_html=True)
-    
+            </div>
+            """, unsafe_allow_html=True)
+
     with col_info:
         st.markdown(f"<h3 style='color: {ACTIA_GREEN};'>🎯 ML Predictions</h3>", unsafe_allow_html=True)
         
@@ -661,8 +661,8 @@ elif page == "📊 Prédictions":
 elif page == "📄 Tout est Données":
     st.markdown(f"<h1 style='color: {ACTIA_GREY};'>📄 Tout est Données</h1>", unsafe_allow_html=True)
     st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>Énorme potentiel dans les données non structurées</p>", unsafe_allow_html=True)
-    
-    st.markdown(f"""
+        
+        st.markdown(f"""
     <div style='background-color: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
         <h2 style='color: {ACTIA_GREY}; margin-top: 0;'>💡 80% des données d'entreprise sont non structurées</h2>
         <p style='font-size: 17px; color: {ACTIA_GREY}; line-height: 1.8;'>
@@ -672,21 +672,21 @@ elif page == "📄 Tout est Données":
             ✅ <strong>Image → Détection défauts</strong> → Contrôle qualité visuel automatique<br>
             ✅ <strong>Analyse en temps réel</strong> → Snowflake Document AI
         </p>
-    </div>
-    """, unsafe_allow_html=True)
-    
+        </div>
+        """, unsafe_allow_html=True)
+        
     st.markdown("<br><br>", unsafe_allow_html=True)
     
-    # 2 tabs: PDF textuel et Photo
-    tabs = st.tabs(["📄 PDF → Excel (Analyse d'Écart)", "📷 Photo → Détection Défauts"])
+    # 3 tabs: PDF textuel, Photo, et Audio
+    tabs = st.tabs(["📄 PDF → Excel (Analyse d'Écart)", "📷 Photo → Détection Défauts", "🎤 Audio → Insights"])
     
     # TAB 1: PDF → Excel (Analyse d'Écart et Coûts)
     with tabs[0]:
         st.markdown(f"<h2 style='color: {ACTIA_GREY};'>📄 Analyse d'Écart et Coûts (Variance Analysis)</h2>", unsafe_allow_html=True)
         st.markdown(f"<p style='color: {ACTIA_GREY}; font-size: 16px;'>Convertissez automatiquement vos rapports PDF en données Excel exploitables</p>", unsafe_allow_html=True)
-        
-        st.markdown("<br>", unsafe_allow_html=True)
-        
+            
+            st.markdown("<br>", unsafe_allow_html=True)
+            
         uploaded_pdf = st.file_uploader("📤 Glissez-déposez votre PDF ici", 
                                        type=['pdf'], key='pdf_variance')
         
@@ -812,13 +812,13 @@ Alerte: Dépassement budget composants
                     st.image(uploaded_photo, caption="Carte électronique à analyser", use_container_width=True)
                 else:
                     # Pour PDF, afficher un placeholder
-                    st.markdown(f"""
+            st.markdown(f"""
                     <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 60px; text-align: center; border-radius: 10px;'>
                         <h3 style='color: {ACTIA_GREY};'>📄 PDF Chargé</h3>
                         <p style='color: {ACTIA_GREY};'>{uploaded_photo.name}</p>
                         <p style='color: {ACTIA_GREY};'>Taille: {uploaded_photo.size} bytes</p>
-                    </div>
-                    """, unsafe_allow_html=True)
+            </div>
+            """, unsafe_allow_html=True)
             
             with col_img2:
                 st.markdown(f"<h4 style='color: {ACTIA_GREEN};'>🤖 Analyse IA</h4>", unsafe_allow_html=True)
@@ -833,7 +833,7 @@ Alerte: Dépassement budget composants
                     st.warning("⚠️ **Défaut détecté sur la carte!**")
                     
                     # Simuler un cercle rouge sur une zone
-                    st.markdown(f"""
+            st.markdown(f"""
                     <div style='background-color: #fff3cd; border-left: 5px solid #ffc107; 
                                 padding: 20px; border-radius: 10px; margin: 15px 0;'>
                         <h4 style='color: #856404; margin: 0;'>🔍 Défaut Identifié</h4>
@@ -846,12 +846,12 @@ Alerte: Dépassement budget composants
                             <li><strong>Confiance IA:</strong> 94.3%</li>
                             <li><strong>Action:</strong> ❌ Rejet - Reprise nécessaire</li>
                         </ul>
-                    </div>
-                    """, unsafe_allow_html=True)
-                    
+            </div>
+            """, unsafe_allow_html=True)
+            
                     # Visualisation du défaut
                     st.markdown(f"<h5 style='color: {ACTIA_GREY};'>📍 Localisation Précise:</h5>", unsafe_allow_html=True)
-                    st.markdown(f"""
+            st.markdown(f"""
                     <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 20px; border-radius: 10px; text-align: center;'>
                         <div style='position: relative; display: inline-block;'>
                             <div style='width: 300px; height: 200px; background-color: #2d5016; 
@@ -864,7 +864,7 @@ Alerte: Dépassement budget composants
                                             background-color: red; color: white; 
                                             padding: 5px 10px; border-radius: 5px; font-size: 12px;'>
                                     Zone C4 - Défaut détecté
-                                </div>
+            </div>
                             </div>
                         </div>
                         <p style='color: {ACTIA_GREY}; margin-top: 10px; font-size: 14px;'>
@@ -877,12 +877,12 @@ Alerte: Dépassement budget composants
                         50% {{ opacity: 0.3; }}
                     }}
                     </style>
-                    """, unsafe_allow_html=True)
-                    
+            """, unsafe_allow_html=True)
+
                     st.markdown("<br>", unsafe_allow_html=True)
-                    
+    
                     # Stats
-                    st.markdown(f"""
+    st.markdown(f"""
                     <div style='background-color: white; padding: 20px; border-radius: 10px; 
                                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
                         <h4 style='color: {ACTIA_GREY}; margin-top: 0;'>📊 Statistiques Contrôle Qualité</h4>
@@ -890,10 +890,130 @@ Alerte: Dépassement budget composants
                         <p><strong>Faux positifs:</strong> <span style='color: {ACTIA_GREY};'>0.8%</span></p>
                         <p><strong>Gain de temps:</strong> <span style='color: {ACTIA_GREEN};'>92%</span> vs inspection manuelle</p>
                         <p><strong>Coût évité:</strong> <span style='color: {ACTIA_GREEN};'>€180K/an</span> en défauts non détectés</p>
-                    </div>
-                    """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
         else:
             st.info("👆 Uploadez une photo (JPG, PNG) ou un PDF de carte électronique pour analyse")
+    
+    # TAB 3: Audio → Insights
+    with tabs[2]:
+        st.markdown(f"<h2 style='color: {ACTIA_GREY};'>🎤 Audio → Insights (Transcription)</h2>", unsafe_allow_html=True)
+        st.markdown(f"<p style='color: {ACTIA_GREY}; font-size: 16px;'>Analysez vos enregistrements vocaux et réunions</p>", unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+        uploaded_audio_pdf = st.file_uploader("📤 Glissez-déposez votre PDF avec transcription audio", 
+                                             type=['pdf'], key='audio_transcript')
+        
+        if uploaded_audio_pdf:
+            col_aud1, col_aud2 = st.columns([1, 1])
+            
+            with col_aud1:
+                st.markdown(f"<h4 style='color: {ACTIA_GREY};'>📄 Document PDF</h4>", unsafe_allow_html=True)
+                
+                st.markdown(f"""
+                <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 40px; text-align: center; border-radius: 10px;'>
+                    <h3 style='color: {ACTIA_GREY};'>🎤 PDF Transcription</h3>
+                    <p style='color: {ACTIA_GREY};'><strong>{uploaded_audio_pdf.name}</strong></p>
+                    <p style='color: {ACTIA_GREY};'>Taille: {uploaded_audio_pdf.size / 1024:.1f} KB</p>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                st.markdown("<br>", unsafe_allow_html=True)
+                
+                st.text_area("📝 Transcription extraite du PDF:", """
+[Réunion Qualité - 23 Nov 2024 - 10:45]
+
+Ingénieur Qualité (Marie):
+"Bonjour à tous. J'ai constaté une augmentation des défauts 
+sur le composant TGX-2847-A depuis hier soir. On a eu 3 rejets 
+sur les 50 dernières unités testées. Le problème semble venir 
+des soudures sur le condensateur C47."
+
+Responsable Production (Jean):
+"J'ai vérifié les paramètres. La température de la station 
+de soudage était à 315°C au lieu de 340°C. On a eu un problème 
+de calibration ce matin."
+
+Directeur Opérations (Paul):
+"Il faut retester immédiatement les 200 unités produites 
+depuis hier 18h. Marie, tu peux coordonner ça?"
+
+Marie: "Oui, j'envoie l'alerte qualité maintenant."
+""", height=320, disabled=True)
+            
+            with col_aud2:
+                st.markdown(f"<h4 style='color: {ACTIA_GREEN};'>🤖 Analyse IA & Insights</h4>", unsafe_allow_html=True)
+                
+                if st.button("🚀 Extraire Insights", key='analyze_transcript', use_container_width=True):
+                    with st.spinner("🔍 Analyse IA du contenu..."):
+                        progress = st.progress(0)
+                    for i in range(100):
+                        time.sleep(0.02)
+                            progress.progress(i + 1)
+                    
+                    st.success("✅ Insights extraits avec succès!")
+                    
+                    st.markdown(f"""
+                    <div style='background-color: #fff3cd; border-left: 5px solid #ffc107; 
+                                padding: 20px; border-radius: 10px; margin: 15px 0;'>
+                        <h4 style='color: #856404; margin: 0;'>⚠️ Problème Qualité Critique Identifié</h4>
+                        <br>
+                        <ul style='color: #856404; margin: 10px 0; line-height: 1.8;'>
+                            <li><strong>Composant affecté:</strong> TGX-2847-A, Condensateur C47</li>
+                            <li><strong>Cause racine:</strong> Température incorrecte (315°C vs 340°C requis)</li>
+                            <li><strong>Impact mesuré:</strong> 6% taux de rejet (3/50 unités)</li>
+                            <li><strong>Période affectée:</strong> Hier 18h00 → Aujourd'hui 10h45</li>
+                            <li><strong>Unités à retester:</strong> 200 unités</li>
+                            <li><strong>Coût estimé:</strong> €3,200 si défauts non détectés</li>
+                        </ul>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
+                    st.markdown(f"<h5 style='color: {ACTIA_GREY}; margin-top: 25px;'>📊 Actions Automatiques Déclenchées:</h5>", unsafe_allow_html=True)
+                    
+                    col_a1, col_a2 = st.columns(2)
+                    with col_a1:
+                    st.markdown(f"""
+                        <div style='background-color: #e8f5e9; padding: 15px; border-radius: 10px; border-left: 4px solid {ACTIA_GREEN};'>
+                            <strong style='color: {ACTIA_DARK_GREEN};'>✅ Ticket Qualité Créé</strong>
+                            <p style='color: {ACTIA_GREY}; margin: 5px 0 0 0;'>#QA-2024-1142</p>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    with col_a2:
+                    st.markdown(f"""
+                        <div style='background-color: #e8f5e9; padding: 15px; border-radius: 10px; border-left: 4px solid {ACTIA_GREEN};'>
+                            <strong style='color: {ACTIA_DARK_GREEN};'>✅ Alerte Envoyée</strong>
+                            <p style='color: {ACTIA_GREY}; margin: 5px 0 0 0;'>Équipe qualité notifiée</p>
+                    </div>
+                    """, unsafe_allow_html=True)
+                
+                st.markdown("<br>", unsafe_allow_html=True)
+                
+                    # Métriques d'impact
+                    col_m1, col_m2, col_m3 = st.columns(3)
+                    with col_m1:
+                        st.metric("Unités à Retester", "200", "⚠️")
+                    with col_m2:
+                        st.metric("Coût Risque", "€3,200", delta="Évité si action rapide", delta_color="inverse")
+                    with col_m3:
+                        st.metric("Temps Sauvé", "2h30", delta="vs saisie manuelle", delta_color="normal")
+                    
+                    st.markdown("<br>", unsafe_allow_html=True)
+                    
+                    # Stats globales
+            st.markdown(f"""
+            <div style='background-color: white; padding: 20px; border-radius: 10px; 
+                                box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
+                        <h4 style='color: {ACTIA_GREY}; margin-top: 0;'>💡 Bénéfices Analyse Audio/Transcription</h4>
+                        <p><strong>Temps de traitement:</strong> <span style='color: {ACTIA_GREEN};'>2 minutes</span> vs 2h30 manuel</p>
+                        <p><strong>Précision extraction:</strong> <span style='color: {ACTIA_GREEN};'>98.7%</span></p>
+                        <p><strong>Actions automatiques:</strong> <span style='color: {ACTIA_GREEN};'>Tickets + Alertes</span></p>
+                        <p><strong>Réduction des délais:</strong> <span style='color: {ACTIA_GREEN};'>95%</span> plus rapide</p>
+            </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.info("👆 Uploadez un PDF contenant une transcription audio pour analyse")
 
 # Footer
 st.markdown("<br><br>", unsafe_allow_html=True)
