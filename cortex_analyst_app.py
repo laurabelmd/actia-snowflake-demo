@@ -200,17 +200,7 @@ st.markdown(f"""
     }}
     .stTextInput>div>div>input {{
         border-radius: 10px;
-    }}
-    /* Chat container styling - optimisé mobile */
-    .chat-container {{
-        background: white;
-        border-radius: 10px;
-        padding: 15px;
-        min-height: 200px;
-        max-height: 400px;
-        overflow-y: auto;
-        margin-bottom: 15px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border: 2px solid {ACTIA_GREEN};
     }}
     </style>
 """, unsafe_allow_html=True)
@@ -354,6 +344,7 @@ st.markdown(f"""
 
 # Predefined questions
 st.markdown(f"<p style='color: {ACTIA_GREY};'><strong>Questions suggérées:</strong></p>", unsafe_allow_html=True)
+st.markdown(f"<p style='color: {ACTIA_GREEN}; font-size: 13px; text-align: center; margin: 10px 0;'>👇 Ou scrollez en bas pour taper votre question</p>", unsafe_allow_html=True)
 col_q1, col_q2 = st.columns(2)
 
 with col_q1:
@@ -397,20 +388,9 @@ with col_q4:
             st.session_state.messages.append({"role": "assistant", "content": response})
             st.rerun()
 
-# Chat display area
-chat_container = st.container()
-
-with chat_container:
-    st.markdown("<div class='chat-container'>", unsafe_allow_html=True)
-    
-    if len(st.session_state.messages) == 0:
-        st.markdown(f"""
-        <div style='text-align: center; padding: 20px; color: {ACTIA_GREY};'>
-            <h3 style='font-size: 18px; margin: 0;'>👋 Bienvenue!</h3>
-            <p style='font-size: 14px; margin: 10px 0 0 0;'>Posez vos questions sur la production, qualité ou traçabilité.</p>
-        </div>
-        """, unsafe_allow_html=True)
-    
+# Chat display area - affichage uniquement des messages (pas de conteneur blanc)
+if len(st.session_state.messages) > 0:
+    st.markdown("<br>", unsafe_allow_html=True)
     for message in st.session_state.messages:
         if message["role"] == "user":
             st.markdown(f"""
@@ -424,8 +404,7 @@ with chat_container:
                 <strong>🤖 Cortex Analyst:</strong><br>{message["content"]}
             </div>
             """, unsafe_allow_html=True)
-    
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
 
 # Chat input
 user_question = st.text_input(
