@@ -316,149 +316,497 @@ elif page == "🤖 IA Accessible":
 
 # ML Page (fusion Traçabilité + Prédictions)
 elif page == "🏭 ML":
-    st.markdown(f"<h1 style='color: {ACTIA_GREY};'>📊 Machine Learning & OEE Monitoring</h1>", unsafe_allow_html=True)
-    st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>L'IA c'est aussi le ML avec les forecasts</p>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='color: {ACTIA_GREY};'>🔮 L'IA qui Anticipe et qui Agit</h1>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>Du Forecasting à l'Analyse Prescriptive</p>", unsafe_allow_html=True)
     
-    st.markdown("<br>", unsafe_allow_html=True)
-    
-    # Status Alert (inspired by screenshot)
+    # INTRO : Use case clair
     st.markdown(f"""
-    <div style='background-color: #ffebee; border-left: 5px solid #f44336; 
-                padding: 20px; border-radius: 10px; margin-bottom: 20px;'>
-        <h3 style='color: #d32f2f; margin: 0;'>🔴 STATUS: Critical - Only able to achieve 35% of remaining production needed</h3>
-        <p style='color: {ACTIA_GREY}; margin-top: 10px; font-size: 16px;'>
-            <strong>REASON:</strong> Current production trend shows ability to produce 51 units vs 144 needed units, 
-            with OEE at 72% and Run Rate at 50%, indicating severe shortfall of 93 units by end of shift.
+    <div style='background-color: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 20px 0;'>
+        <h2 style='color: {ACTIA_GREY}; margin-top: 0;'>🎯 Use Case : Forecasting Production Usine Toulouse</h2>
+        <p style='font-size: 16px; color: {ACTIA_GREY}; line-height: 1.8;'>
+            <strong>Le ML, ce n'est pas que des chatbots.</strong> C'est la capacité d'<strong>ANTICIPER</strong> et d'<strong>AGIR</strong>.
+            <br><br>
+            <strong>Objectif :</strong> Prévoir la production de demain et de la semaine prochaine pour l'usine de Toulouse,
+            en tenant compte de <strong>facteurs externes</strong> (météo, marché, prix composants).
+            <br><br>
+            ✅ Forecast en quelques clics<br>
+            ✅ Enrichissement avec la Marketplace<br>
+            ✅ Simulations de scénarios interactives<br>
+            ✅ Actions prescriptives automatiques
         </p>
     </div>
     """, unsafe_allow_html=True)
     
-    # OEE Metrics Chart (inspired by screenshot - multi-line graph)
-    st.markdown(f"<h3 style='color: {ACTIA_GREY};'>📈 OEE Metrics - Live Monitoring</h3>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
     
-    # Generate multi-line OEE data (simulating different stations like screenshot)
-    dates = pd.date_range(start='2024-05-22 15:00', end='2024-05-23 01:00', freq='H')
+    # ========================================
+    # SECTION 1: MARKETPLACE - GRAPHES VISUELS
+    # ========================================
     
-    # Create data for multiple production lines (like screenshot)
-    fig_oee = go.Figure()
-    
-    lines = [
-        {'name': 'DTP-RL-01 - Material Intake', 'color': '#1f77b4'},
-        {'name': 'DTP-RL-02 - Storage', 'color': '#ff7f0e'},
-        {'name': 'DTP-RL-03 - Distribution', 'color': '#2ca02c'},
-        {'name': 'DTP-RL-04 - Assembly Line 1', 'color': '#d62728'},
-        {'name': 'DTP-RL-05 - Assembly Line 2', 'color': '#9467bd'},
-        {'name': 'DTP-RL-06 - Quality Check', 'color': '#8c564b'},
-        {'name': 'DTP-RL-07 - Packaging', 'color': '#e377c2'}
-    ]
-    
-    for line in lines:
-        # Generate varying OEE values (70-100% with some drops)
-        oee_values = []
-        for i in range(len(dates)):
-            base = random.uniform(80, 95)
-            # Add occasional drops
-            if random.random() < 0.1:
-                base = random.uniform(60, 75)
-            oee_values.append(base)
-        
-        fig_oee.add_trace(go.Scatter(
-            x=dates,
-            y=oee_values,
-            name=line['name'],
-            mode='lines+markers',
-            line=dict(width=2, color=line['color']),
-            marker=dict(size=6)
-        ))
-    
-    fig_oee.update_layout(
-        height=500,
-        xaxis_title="Time",
-        yaxis_title="OEE (%)",
-        yaxis=dict(range=[50, 105]),
-        hovermode='x unified',
-        plot_bgcolor='white',
-        legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="center", x=0.5)
-    )
-    
-    st.plotly_chart(fig_oee, use_container_width=True)
+    st.markdown(f"<h2 style='color: {ACTIA_GREY};'>📊 Étape 1 : Enrichir avec la Marketplace Snowflake</h2>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color: {ACTIA_GREY}; font-size: 16px;'>Accédez à des données externes de qualité en 1 clic (gratuites ou payantes)</p>", unsafe_allow_html=True)
     
     st.markdown("<br>", unsafe_allow_html=True)
     
-    # Chatbot section (like screenshot with "Why did OEE drop?")
-    col_chat, col_info = st.columns([3, 2])
+    # 3 graphes côte à côte
+    col_mkt1, col_mkt2, col_mkt3 = st.columns(3)
     
-    with col_chat:
+    with col_mkt1:
+        st.markdown(f"<h4 style='color: {ACTIA_GREEN}; text-align: center;'>📈 S&P 500 Automotive</h4>", unsafe_allow_html=True)
+        
+        # Données SNP 500
+        dates_snp = pd.date_range(start='2024-10-01', end='2024-12-01', freq='D')
+        values_snp = [3800 + i*2 + random.randint(-30, 30) for i in range(30)]
+        # Prévision en baisse
+        forecast_snp = [values_snp[-1] - i*3 for i in range(1, 32)]
+        
+        fig_snp = go.Figure()
+        fig_snp.add_trace(go.Scatter(
+            x=dates_snp[:30], 
+            y=values_snp, 
+            name="Historique", 
+            line=dict(color=ACTIA_GREEN, width=2)
+        ))
+        fig_snp.add_trace(go.Scatter(
+            x=pd.date_range(start='2024-11-30', end='2024-12-31', freq='D'),
+            y=forecast_snp,
+            name="Prévision",
+            line=dict(color='red', dash='dash', width=2)
+        ))
+        
+        fig_snp.update_layout(
+            height=280,
+            margin=dict(l=10, r=10, t=10, b=10),
+            showlegend=False,
+            xaxis=dict(showgrid=False),
+            yaxis=dict(showgrid=True, gridcolor='#f0f0f0'),
+            plot_bgcolor='white'
+        )
+        
+        st.plotly_chart(fig_snp, use_container_width=True)
+        
         st.markdown(f"""
-        <div style='background-color: white; padding: 20px; border-radius: 15px; 
-                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
-            <h3 style='color: {ACTIA_GREEN}; margin-top: 0;'>💬 Ask the AI</h3>
-            <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 15px; border-radius: 10px; margin: 10px 0;'>
-                <strong style='color: {ACTIA_GREY};'>Prompt:</strong>
-                <p style='color: {ACTIA_GREY}; margin: 5px 0;'>Why did OEE drop?</p>
-            </div>
-            <div style='background-color: white; border: 2px solid {ACTIA_LIGHT_GREY}; 
-                        padding: 15px; border-radius: 10px;'>
-                <strong style='color: {ACTIA_GREEN};'>Response:</strong>
-                <p style='color: {ACTIA_GREY}; margin-top: 10px; line-height: 1.6;'>
-                    To analyze why OEE dropped, I'll look for significant decreases in the OEE values 
-                    and examine the contributing factors (Quality, Performance, and Availability).
-                    <br><br>
-                    Looking at the data, there are several notable drops in OEE. One significant drop 
-                    occurs at <strong>2024-05-23 01:00:00.000</strong> where OEE falls to 0.7109. 
-                    This drop was caused by:
-                    <br><br>
-                    1. A relatively good <strong>Quality score (0.9552)</strong><br>
-                    2. A decent <strong>Performance score (0.9255)</strong><br>
-                    3. A low <strong>Availability score (0.8042)</strong>
-                    <br><br>
-                    The main factor causing this OEE drop was the <span style='color: #d32f2f;'><strong>low Availability score</strong></span>, 
-                    indicating that the equipment was not running as much as it should have been during this period. 
-                    This could be due to:
-                    <br>
-                    • Unplanned downtime<br>
-                    • Equipment failures<br>
-                    • Setup and adjustment time<br>
-                    • Idle time<br>
-                    • Material shortages
+        <div style='background-color: #ffebee; padding: 10px; border-radius: 5px; text-align: center;'>
+            <p style='color: #c62828; margin: 0; font-size: 13px;'>
+                <strong>-8% prévu</strong><br>
+                → Baisse commandes PSA/Renault dans 3 mois
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col_mkt2:
+        st.markdown(f"<h4 style='color: {ACTIA_GREEN}; text-align: center;'>🌦️ Météo Toulouse</h4>", unsafe_allow_html=True)
+        
+        # Données météo
+        dates_weather = pd.date_range(start='2024-11-25', end='2024-12-02', freq='D')
+        temp_weather = [12, 14, 16, 22, 28, 37, 35, 33]  # Canicule prévue
+        
+        fig_weather = go.Figure()
+        fig_weather.add_trace(go.Scatter(
+            x=dates_weather,
+            y=temp_weather,
+            mode='lines+markers',
+            line=dict(color='orange', width=3),
+            marker=dict(size=8),
+            fill='tozeroy',
+            fillcolor='rgba(255, 165, 0, 0.2)'
+        ))
+        
+        # Ligne d'alerte canicule
+        fig_weather.add_hline(y=35, line_dash="dash", line_color="red", 
+                               annotation_text="Seuil canicule", annotation_position="right")
+        
+        fig_weather.update_layout(
+            height=280,
+            margin=dict(l=10, r=10, t=10, b=10),
+            xaxis=dict(showgrid=False),
+            yaxis=dict(title="°C", showgrid=True, gridcolor='#f0f0f0'),
+            plot_bgcolor='white'
+        )
+        
+        st.plotly_chart(fig_weather, use_container_width=True)
+        
+        st.markdown(f"""
+        <div style='background-color: #fff3cd; padding: 10px; border-radius: 5px; text-align: center;'>
+            <p style='color: #856404; margin: 0; font-size: 13px;'>
+                <strong>Canicule 26-28 Nov</strong><br>
+                → Impact OEE usines non climatisées
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col_mkt3:
+        st.markdown(f"<h4 style='color: {ACTIA_GREEN}; text-align: center;'>💰 Prix Composants</h4>", unsafe_allow_html=True)
+        
+        # Prix composants (semi-conducteurs)
+        dates_prix = pd.date_range(start='2024-06-01', end='2024-12-01', freq='M')
+        prix_base = [100, 103, 107, 110, 113, 115, 118]
+        
+        fig_prix = go.Figure()
+        fig_prix.add_trace(go.Bar(
+            x=dates_prix,
+            y=prix_base,
+            marker=dict(color=['#2ca02c', '#2ca02c', '#ffc107', '#ffc107', '#ff9800', '#f44336', '#c62828']),
+            text=[f"+{p-100}%" for p in prix_base],
+            textposition='outside'
+        ))
+        
+        fig_prix.update_layout(
+            height=280,
+            margin=dict(l=10, r=10, t=10, b=10),
+            xaxis=dict(showgrid=False),
+            yaxis=dict(title="Index (base 100)", showgrid=True, gridcolor='#f0f0f0'),
+            plot_bgcolor='white'
+        )
+        
+        st.plotly_chart(fig_prix, use_container_width=True)
+        
+        st.markdown(f"""
+        <div style='background-color: #ffebee; padding: 10px; border-radius: 5px; text-align: center;'>
+            <p style='color: #c62828; margin: 0; font-size: 13px;'>
+                <strong>+18% depuis juin</strong><br>
+                → Impact marges produits
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    st.markdown(f"""
+    <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 15px; border-radius: 10px; margin: 20px 0;'>
+        <p style='color: {ACTIA_GREY}; margin: 0; font-size: 15px; text-align: center;'>
+            💡 <strong>Ces données sont disponibles en 1 clic sur la Marketplace Snowflake</strong> 
+            (gratuites ou payantes selon la source)
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    
+    # ========================================
+    # SECTION 2: FORECASTING INTERACTIF + WIDGETS
+    # ========================================
+    
+    st.markdown(f"<h2 style='color: {ACTIA_GREY};'>🎮 Étape 2 : Forecasting Interactif avec Simulations</h2>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color: {ACTIA_GREY}; font-size: 16px;'>Testez différents scénarios en temps réel</p>", unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Forecast de base (sans modifications)
+    st.markdown(f"""
+    <div style='background-color: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
+        <h3 style='color: {ACTIA_GREEN}; margin-top: 0;'>📊 Forecast de Production (baseline)</h3>
+    """, unsafe_allow_html=True)
+    
+    col_base1, col_base2, col_base3 = st.columns(3)
+    with col_base1:
+        st.metric("Production prévue demain", "1,450 unités", "Confiance: 94%")
+    with col_base2:
+        st.metric("Production semaine prochaine", "9,200 unités", "Tendance stable")
+    with col_base3:
+        st.metric("OEE prévu moyen", "89%", "+2% vs semaine dernière")
+    
+    st.markdown("</div>", unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # WIDGETS INTERACTIFS
+    st.markdown(f"<h3 style='color: {ACTIA_GREEN};'>🎛️ Simulez des scénarios (modifiez les paramètres)</h3>", unsafe_allow_html=True)
+    
+    col_w1, col_w2, col_w3 = st.columns(3)
+    
+    with col_w1:
+        st.markdown(f"<h4 style='color: {ACTIA_GREY}; text-align: center;'>⚙️ Âge des Machines</h4>", unsafe_allow_html=True)
+        age_machine = st.slider(
+            "Choisir la ligne de production",
+            min_value=0,
+            max_value=10,
+            value=3,
+            format="%d ans",
+            key='age_machine',
+            help="Ligne 1 (récente) vs Ligne 2 (10 ans)"
+        )
+        
+        # Calcul impact
+        impact_age = 1 - (age_machine * 0.012)  # -1.2% par année
+        production_ajustee_age = int(1450 * impact_age)
+        delta_age = production_ajustee_age - 1450
+        
+        st.metric(
+            "Production ajustée",
+            f"{production_ajustee_age} unités",
+            delta=f"{delta_age:+d} unités ({(impact_age-1)*100:.1f}%)",
+            delta_color="inverse" if delta_age < 0 else "normal"
+        )
+        
+        if age_machine > 7:
+            st.warning("⚠️ Machines anciennes → Impact significatif")
+        elif age_machine < 3:
+            st.success("✅ Machines récentes → Performance optimale")
+    
+    with col_w2:
+        st.markdown(f"<h4 style='color: {ACTIA_GREY}; text-align: center;'>📦 Stock Composants</h4>", unsafe_allow_html=True)
+        stock_niveau = st.slider(
+            "Niveau de stock de sécurité",
+            min_value=20,
+            max_value=60,
+            value=35,
+            format="%d unités",
+            key='stock_niveau',
+            help="Impact sur le risque de rupture"
+        )
+        
+        # Calcul risque rupture
+        risque_rupture = max(0, (40 - stock_niveau) * 0.75)  # Risque augmente si stock < 40
+        
+        st.metric(
+            "Risque de rupture",
+            f"{risque_rupture:.1f}%",
+            delta=f"{-risque_rupture if stock_niveau > 35 else risque_rupture:.1f}%",
+            delta_color="inverse"
+        )
+        
+        if risque_rupture > 10:
+            st.error(f"🔴 Risque élevé → Augmenter stock")
+        elif risque_rupture < 3:
+            st.success("✅ Risque faible → Stock suffisant")
+        else:
+            st.warning("⚠️ Risque modéré")
+    
+    with col_w3:
+        st.markdown(f"<h4 style='color: {ACTIA_GREY}; text-align: center;'>🌡️ Conditions Météo</h4>", unsafe_allow_html=True)
+        meteo = st.select_slider(
+            "Prévision température",
+            options=["Normal (15-25°C)", "Chaud (26-34°C)", "Canicule (35-40°C)"],
+            value="Normal (15-25°C)",
+            key='meteo'
+        )
+        
+        # Impact OEE selon météo
+        oee_impact = {
+            "Normal (15-25°C)": 89,
+            "Chaud (26-34°C)": 82,
+            "Canicule (35-40°C)": 76
+        }
+        
+        oee_prevu = oee_impact[meteo]
+        delta_oee = oee_prevu - 89
+        
+        st.metric(
+            "OEE prévu",
+            f"{oee_prevu}%",
+            delta=f"{delta_oee:+d}%",
+            delta_color="inverse" if delta_oee < 0 else "normal"
+        )
+        
+        if "Canicule" in meteo:
+            st.error("🔴 Canicule → Impact fort sur OEE")
+        elif "Chaud" in meteo:
+            st.warning("⚠️ Chaleur → Impact modéré")
+        else:
+            st.success("✅ Conditions normales")
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Graphe forecast avec paramètres ajustés
+    st.markdown(f"<h3 style='color: {ACTIA_GREY};'>📈 Forecast Ajusté selon Simulations</h3>", unsafe_allow_html=True)
+    
+    # Calculer production finale avec tous les paramètres
+    production_finale = int(1450 * impact_age * (1 - risque_rupture/200) * (oee_prevu/89))
+    
+    dates_forecast = pd.date_range(start='2024-11-25', end='2024-12-02', freq='D')
+    production_baseline = [1420, 1435, 1450, 1445, 1460, 1455, 1470, 1465]
+    production_ajustee = [int(p * impact_age * (1 - risque_rupture/200) * (oee_prevu/89)) for p in production_baseline]
+    
+    fig_forecast = go.Figure()
+    
+    fig_forecast.add_trace(go.Scatter(
+        x=dates_forecast,
+        y=production_baseline,
+        name="Baseline (conditions normales)",
+        line=dict(color=ACTIA_GREEN, width=3),
+        mode='lines+markers'
+    ))
+    
+    fig_forecast.add_trace(go.Scatter(
+        x=dates_forecast,
+        y=production_ajustee,
+        name="Avec paramètres simulés",
+        line=dict(color='orange', width=3, dash='dash'),
+        mode='lines+markers'
+    ))
+    
+    fig_forecast.update_layout(
+        height=400,
+        xaxis_title="Date",
+        yaxis_title="Production (unités/jour)",
+        hovermode='x unified',
+        plot_bgcolor='white',
+        legend=dict(orientation="h", yanchor="bottom", y=-0.2, xanchor="center", x=0.5)
+    )
+    
+    st.plotly_chart(fig_forecast, use_container_width=True)
+    
+    # Résumé impact simulation
+    delta_total = production_finale - 1450
+    st.markdown(f"""
+    <div style='background-color: {"#e8f5e9" if delta_total >= 0 else "#ffebee"}; padding: 20px; border-radius: 10px; border-left: 5px solid {"#2ca02c" if delta_total >= 0 else "#f44336"};'>
+        <h4 style='color: {ACTIA_GREY}; margin-top: 0;'>📊 Impact Total de vos Simulations</h4>
+        <p style='color: {ACTIA_GREY}; font-size: 16px; margin: 0;'>
+            Production demain : <strong style='color: {"#2ca02c" if delta_total >= 0 else "#f44336"};'>{production_finale} unités</strong> 
+            ({delta_total:+d} unités vs baseline)
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    
+    # ========================================
+    # SECTION 3: ANALYSE PRESCRIPTIVE
+    # ========================================
+    
+    st.markdown(f"<h2 style='color: {ACTIA_GREY};'>🤖 Étape 3 : Analyse Prescriptive - Actions Recommandées</h2>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color: {ACTIA_GREY}; font-size: 16px;'>Du forecast à l'ACTION : que faire concrètement ?</p>", unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Générer recommandations basées sur les paramètres
+    st.markdown(f"""
+    <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 25px; border-radius: 15px; border-left: 5px solid {ACTIA_GREEN};'>
+        <h3 style='color: {ACTIA_DARK_GREEN}; margin-top: 0;'>🎯 Actions Prescriptives Automatiques</h3>
+    """, unsafe_allow_html=True)
+    
+    col_act1, col_act2 = st.columns(2)
+    
+    with col_act1:
+        st.markdown(f"<h4 style='color: {ACTIA_GREY};'>📅 Demain (Mardi 26/11)</h4>", unsafe_allow_html=True)
+        
+        actions_demain = []
+        
+        if "Canicule" in meteo or "Chaud" in meteo:
+            actions_demain.append({
+                'icon': '🌡️',
+                'action': 'Activer ventilation supplémentaire dès 6h',
+                'impact': 'Maintien OEE à 85% vs 76% sans action'
+            })
+            actions_demain.append({
+                'icon': '💧',
+                'action': 'Programmer pauses hydratation +2/jour',
+                'impact': 'Prévention accidents du travail'
+            })
+            if "Canicule" in meteo:
+                actions_demain.append({
+                    'icon': '⚙️',
+                    'action': 'Réduire cadence ligne 3 de 15%',
+                    'impact': 'Éviter surchauffe machines'
+                })
+        
+        if age_machine > 7:
+            actions_demain.append({
+                'icon': '🔧',
+                'action': 'Maintenance préventive ligne 2',
+                'impact': 'Éviter panne (coût évité: €25K)'
+            })
+        
+        if risque_rupture > 10:
+            actions_demain.append({
+                'icon': '📦',
+                'action': 'Commande urgente composants critiques',
+                'impact': 'Éviter arrêt production (coût évité: €45K)'
+            })
+        
+        if not actions_demain:
+            actions_demain.append({
+                'icon': '✅',
+                'action': 'Conditions optimales',
+                'impact': 'Aucune action urgente nécessaire'
+            })
+        
+        for action in actions_demain:
+            st.markdown(f"""
+            <div style='background-color: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 3px solid {ACTIA_GREEN};'>
+                <p style='color: {ACTIA_GREY}; margin: 0;'>
+                    <strong>{action['icon']} {action['action']}</strong><br>
+                    <span style='font-size: 14px;'>→ {action['impact']}</span>
                 </p>
             </div>
-        </div>
-        """, unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
     
-    with col_info:
-        st.markdown(f"<h3 style='color: {ACTIA_GREEN};'>🎯 ML Predictions</h3>", unsafe_allow_html=True)
+    with col_act2:
+        st.markdown(f"<h4 style='color: {ACTIA_GREY};'>📅 Cette Semaine</h4>", unsafe_allow_html=True)
         
         st.markdown(f"""
-        <div style='background-color: white; padding: 15px; border-radius: 10px; 
-                    box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 15px;'>
-            <h4 style='color: {ACTIA_GREY}; margin: 0;'>Forecast Next 4 Hours</h4>
-            <h2 style='color: {ACTIA_GREEN}; margin: 10px 0;'>78% OEE</h2>
-            <p style='color: {ACTIA_GREY}; margin: 0;'>Confidence: 92%</p>
+        <div style='background-color: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 3px solid {ACTIA_GREEN};'>
+            <p style='color: {ACTIA_GREY}; margin: 0;'>
+                <strong>📊 Analyse données météo & marché</strong><br>
+                <span style='font-size: 14px;'>→ Ajuster planning production</span>
+            </p>
         </div>
         """, unsafe_allow_html=True)
         
+        if risque_rupture > 5:
+            st.markdown(f"""
+            <div style='background-color: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 3px solid {ACTIA_GREEN};'>
+                <p style='color: {ACTIA_GREY}; margin: 0;'>
+                    <strong>📦 Renégocier contrat fournisseur #2</strong><br>
+                    <span style='font-size: 14px;'>→ Sécuriser approvisionnement</span>
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+        
         st.markdown(f"""
-        <div style='background-color: #fff3cd; border-left: 5px solid #ffc107; 
-                    padding: 15px; border-radius: 10px; margin-bottom: 15px;'>
-            <h4 style='color: #856404; margin: 0;'>⚠️ Risk Alert</h4>
-            <p style='color: #856404; margin: 10px 0 0 0;'>
-                Station RL-03 predicted to drop below 75% within 2 hours
+        <div style='background-color: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 3px solid {ACTIA_GREEN};'>
+            <p style='color: {ACTIA_GREY}; margin: 0;'>
+                <strong>🔍 Audit qualité ligne 3</strong><br>
+                <span style='font-size: 14px;'>→ Prévenir défauts futurs</span>
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown(f"<h4 style='color: {ACTIA_GREY}; margin-top: 20px;'>📅 Dans 3 Mois</h4>", unsafe_allow_html=True)
+        
+        st.markdown(f"""
+        <div style='background-color: #fff3cd; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 3px solid #ffc107;'>
+            <p style='color: #856404; margin: 0;'>
+                <strong>⚠️ Baisse commandes prévue (S&P 500 -8%)</strong><br>
+                <span style='font-size: 14px;'>→ Réduire production de 12% en janvier</span>
             </p>
         </div>
         """, unsafe_allow_html=True)
         
         st.markdown(f"""
-        <div style='background-color: white; padding: 15px; border-radius: 10px; 
-                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
-            <h4 style='color: {ACTIA_GREY}; margin: 0;'>🔍 Root Causes Detected</h4>
-            <ul style='color: {ACTIA_GREY}; margin: 10px 0;'>
-                <li>Availability: -12%</li>
-                <li>Changeover time: +18%</li>
-                <li>Material delay: 3 incidents</li>
-            </ul>
+        <div style='background-color: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 3px solid {ACTIA_GREEN};'>
+            <p style='color: {ACTIA_GREY}; margin: 0;'>
+                <strong>💰 Négocier prix composants MAINTENANT</strong><br>
+                <span style='font-size: 14px;'>→ Avant nouvelle hausse prévue</span>
+            </p>
         </div>
         """, unsafe_allow_html=True)
+        
+        st.markdown(f"""
+        <div style='background-color: white; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 3px solid {ACTIA_GREEN};'>
+            <p style='color: {ACTIA_GREY}; margin: 0;'>
+                <strong>🎓 Former équipes sur nouveau produit TGX-3000</strong><br>
+                <span style='font-size: 14px;'>→ Anticipation baisse commandes TGX-2847</span>
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    st.markdown("</div>", unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # ROI Final
+    st.markdown(f"""
+    <div style='background-color: #e8f5e9; padding: 25px; border-radius: 15px; border-left: 5px solid {ACTIA_GREEN};'>
+        <h3 style='color: {ACTIA_DARK_GREEN}; margin-top: 0;'>💰 ROI de l'Analyse Prescriptive</h3>
+        <div style='color: {ACTIA_GREY}; font-size: 16px; line-height: 2;'>
+            ⏱️ <strong>80% de temps libéré</strong> pour les équipes data (crunching automatisé)<br>
+            💰 <strong>€180K/an de coûts évités</strong> (arrêts production prévenus)<br>
+            📈 <strong>Marges préservées</strong> grâce à l'anticipation vs réaction<br>
+            🎯 <strong>Décisions basées sur la data</strong>, pas sur l'intuition<br>
+            🚀 <strong>Innovation profitable</strong> avec market relevance
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Note: Pages IA Conversationnelle et Prédictions fusionnées dans OEE & ML
 
