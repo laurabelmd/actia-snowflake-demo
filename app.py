@@ -1239,35 +1239,59 @@ Alerte: Dépassement budget composants
                     </div>
                     """, unsafe_allow_html=True)
                     
-                    # Visualisation du défaut
+                    # Visualisation du défaut sur l'image réelle
                     st.markdown(f"<h5 style='color: {ACTIA_GREY};'>📍 Localisation Précise:</h5>", unsafe_allow_html=True)
-                    st.markdown(f"""
-                    <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 20px; border-radius: 10px; text-align: center;'>
-                        <div style='position: relative; display: inline-block;'>
-                            <div style='width: 300px; height: 200px; background-color: #2d5016; 
-                                        border-radius: 5px; position: relative;'>
-                                <div style='position: absolute; top: 30px; right: 40px; 
-                                            width: 40px; height: 40px; 
-                                            border: 3px solid red; border-radius: 50%;
-                                            animation: pulse 1.5s infinite;'></div>
-                                <div style='position: absolute; top: 25px; right: 85px; 
-                                            background-color: red; color: white; 
-                                            padding: 5px 10px; border-radius: 5px; font-size: 12px;'>
-                                    Zone C4 - Défaut détecté
+                    
+                    if uploaded_photo.type.startswith('image'):
+                        from PIL import Image, ImageDraw
+                        import io
+                        
+                        image = Image.open(uploaded_photo).convert('RGB')
+                        draw = ImageDraw.Draw(image)
+                        
+                        img_width, img_height = image.size
+                        defect_x = int(img_width * 0.60)
+                        defect_y = int(img_height * 0.45)
+                        radius = int(min(img_width, img_height) * 0.06)
+                        
+                        for i in range(2):
+                            r = radius * (1 + i * 0.3)
+                            draw.ellipse(
+                                [defect_x - r, defect_y - r, defect_x + r, defect_y + r],
+                                outline='red',
+                                width=max(3, int(radius * 0.12))
+                            )
+                        
+                        st.image(image, caption="Carte électronique avec défaut identifié par IA", use_container_width=True)
+                        st.markdown(f"<p style='text-align: center; color: {ACTIA_GREY}; font-size: 14px; margin-top: 10px;'>🔴 Défaut détecté en Zone C4 (marqué par le cercle rouge)</p>", unsafe_allow_html=True)
+                    else:
+                        st.markdown(f"""
+                        <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 20px; border-radius: 10px; text-align: center;'>
+                            <div style='position: relative; display: inline-block;'>
+                                <div style='width: 300px; height: 200px; background-color: #2d5016; 
+                                            border-radius: 5px; position: relative;'>
+                                    <div style='position: absolute; top: 30px; right: 40px; 
+                                                width: 40px; height: 40px; 
+                                                border: 3px solid red; border-radius: 50%;
+                                                animation: pulse 1.5s infinite;'></div>
+                                    <div style='position: absolute; top: 25px; right: 85px; 
+                                                background-color: red; color: white; 
+                                                padding: 5px 10px; border-radius: 5px; font-size: 12px;'>
+                                        Zone C4 - Défaut détecté
+                                    </div>
                                 </div>
                             </div>
+                            <p style='color: {ACTIA_GREY}; margin-top: 10px; font-size: 14px;'>
+                                Représentation schématique de la carte avec défaut marqué en rouge
+                            </p>
                         </div>
-                        <p style='color: {ACTIA_GREY}; margin-top: 10px; font-size: 14px;'>
-                            Représentation schématique de la carte avec défaut marqué en rouge
-                        </p>
-                    </div>
-                    <style>
-                    @keyframes pulse {{
-                        0%, 100% {{ opacity: 1; }}
-                        50% {{ opacity: 0.3; }}
-                    }}
-                    </style>
-                    """, unsafe_allow_html=True)
+                        <style>
+                        @keyframes pulse {{
+                            0%, 100% {{ opacity: 1; }}
+                            50% {{ opacity: 0.3; }}
+                        }}
+                        </style>
+                        """, unsafe_allow_html=True)
                     
                     st.markdown("<br>", unsafe_allow_html=True)
                     
