@@ -210,7 +210,7 @@ elif page == "🤖 IA Accessible":
         st.markdown("<br>", unsafe_allow_html=True)
         
         # For local testing, use this:
-        cortex_url = "http://192.168.1.100:8502"  # Replace with your local IP
+        cortex_url = "https://actia-app-demo-aq7bhvmuvkeedyenaikjer.streamlit.app/"  # Replace with your local IP
         
         # For production (after Streamlit Cloud deployment), use this:
         # cortex_url = "https://actia-cortex-analyst.streamlit.app"
