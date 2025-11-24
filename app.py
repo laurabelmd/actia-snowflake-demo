@@ -1067,8 +1067,8 @@ elif page == "📄 Tout est Données":
     
     st.markdown(f"<h2 style='color: {ACTIA_GREY}; margin-top: 30px;'>🔍 Analyse Multi-Source - Interface Unifiée</h2>", unsafe_allow_html=True)
     
-    # Upload files in 3 columns
-    col_up1, col_up2, col_up3 = st.columns(3)
+    # 3 tabs: PDF textuel, Photo, et Audio
+    tabs = st.tabs(["📄 PDF → Excel (Analyse d'Écart)", "📷 Photo → Détection Défauts", "🎤 Audio → Insights"])
     
     # TAB 1: PDF → Excel (Analyse d'Écart et Coûts)
     with tabs[0]:
