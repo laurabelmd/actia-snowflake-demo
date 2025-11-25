@@ -199,85 +199,8 @@ elif page == "🤖 Nea Actia":
     with col2:
         st.markdown(f"<h3 style='color: {ACTIA_GREEN};'>👀 Aperçu Cortex Analyst</h3>", unsafe_allow_html=True)
         
-        # Preview of Cortex Analyst interface
-        st.markdown(f"""
-        <div style='background-color: {ACTIA_GREY}; padding: 40px 20px; border-radius: 30px; 
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.3);'>
-            <div style='background-color: white; padding: 20px; border-radius: 20px; min-height: 600px;'>
-                <div style='text-align: center; margin-bottom: 20px;'>
-                    <h2 style='color: {ACTIA_GREY}; margin: 0;'>🤖 Actia Cortex Analyst</h2>
-                    <p style='color: {ACTIA_GREY}; font-size: 14px;'>IA pour vos données de production</p>
-                </div>
-                
-                <!-- Dashboard Metrics -->
-                <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0;'>
-                    <div style='background: linear-gradient(135deg, {ACTIA_GREY} 0%, {ACTIA_DARK_GREEN} 100%); 
-                                color: white; padding: 15px; border-radius: 10px; text-align: center;'>
-                        <div style='font-size: 12px;'>🏭 Production</div>
-                        <div style='font-size: 24px; font-weight: bold;'>1,247</div>
-                    </div>
-                    <div style='background: linear-gradient(135deg, {ACTIA_GREY} 0%, {ACTIA_DARK_GREEN} 100%); 
-                                color: white; padding: 15px; border-radius: 10px; text-align: center;'>
-                        <div style='font-size: 12px;'>✅ Qualité</div>
-                        <div style='font-size: 24px; font-weight: bold;'>98.4%</div>
-                    </div>
-                </div>
-                
-                <!-- Chart placeholder -->
-                <div style='background-color: #f5f5f5; padding: 15px; border-radius: 10px; margin: 15px 0;'>
-                    <div style='color: {ACTIA_GREY}; font-size: 14px; font-weight: bold; margin-bottom: 10px;'>
-                        📈 Production (7 jours)
-                    </div>
-                    <div style='height: 100px; background: linear-gradient(to top, {ACTIA_GREEN}40 0%, {ACTIA_GREEN}20 100%); 
-                                border-radius: 5px; position: relative;'>
-                        <svg style='width: 100%; height: 100%;' viewBox='0 0 100 100' preserveAspectRatio='none'>
-                            <polyline points='0,80 20,70 40,60 60,55 80,50 100,45' 
-                                      style='fill: none; stroke: {ACTIA_GREEN}; stroke-width: 2;' />
-                        </svg>
-                    </div>
-                </div>
-                
-                <!-- Chat section -->
-                <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 12px; border-radius: 10px; margin: 15px 0;'>
-                    <div style='color: {ACTIA_GREY}; font-size: 13px; font-weight: bold; margin-bottom: 8px;'>
-                        💬 Posez vos questions
-                    </div>
-                    <div style='display: flex; gap: 5px; flex-wrap: wrap;'>
-                        <span style='background: {ACTIA_GREEN}; color: white; padding: 5px 10px; 
-                                     border-radius: 15px; font-size: 11px;'>📊 Qualité?</span>
-                        <span style='background: {ACTIA_GREEN}; color: white; padding: 5px 10px; 
-                                     border-radius: 15px; font-size: 11px;'>🔍 Problèmes?</span>
-                        <span style='background: {ACTIA_GREEN}; color: white; padding: 5px 10px; 
-                                     border-radius: 15px; font-size: 11px;'>📈 Tendance?</span>
-                    </div>
-                </div>
-                
-                <!-- Chat example -->
-                <div style='background-color: white; border: 2px solid {ACTIA_LIGHT_GREY}; 
-                            padding: 10px; border-radius: 10px; margin: 10px 0;'>
-                    <div style='color: {ACTIA_GREY}; font-size: 11px; font-weight: bold;'>🤖 Cortex Analyst</div>
-                    <p style='color: {ACTIA_GREY}; font-size: 10px; margin: 5px 0; line-height: 1.4;'>
-                        Taux qualité: 98.4%<br>
-                        Évolution: +0.8% vs mois dernier<br>
-                        Station à surveiller: Intégration
-                    </p>
-                </div>
-                
-                <div style='text-align: center; margin-top: 15px; padding-top: 15px; 
-                            border-top: 1px solid {ACTIA_LIGHT_GREY};'>
-                    <p style='color: {ACTIA_GREY}; font-size: 11px;'>❄️ Powered by Snowflake</p>
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown(f"""
-        <div style='background-color: {ACTIA_GREEN}; color: white; padding: 20px; border-radius: 15px; text-align: center;'>
-            <h3 style='margin: 0;'>🚀 Lancez Cortex Analyst</h3>
-            <p style='margin: 10px 0 0 0;'>Scanner le QR code ou lancer localement sur le port 8502</p>
-        </div>
-        """, unsafe_allow_html=True)
+        # Afficher l'image de l'interface Cortex Analyst
+        st.image("IMG_1306.jpg", use_container_width=True)
 
 # ML Page (fusion Traçabilité + Prédictions)
 elif page == "📈 Anticipation & Marges":
