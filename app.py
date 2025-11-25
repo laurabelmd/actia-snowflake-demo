@@ -82,12 +82,12 @@ st.sidebar.markdown(f"<h2 style='color: {ACTIA_GREEN};'>📋 Agenda</h2>", unsaf
 
 page = st.sidebar.radio(
     "Sections",
-    ["🏠 Accueil", "🤖 IA Accessible", "📄 Tout est Données", "🏭 ML"],
+    ["🚀 Vision", "🤖 Nea Actia", "📚 Donnée Captive", "📈 Anticipation & Marges", "📹 Pour conclure"],
     label_visibility="collapsed"
 )
 
 # Home Page
-if page == "🏠 Accueil":
+if page == "🚀 Vision":
     st.markdown(f"<h1 style='text-align: center; color: {ACTIA_GREY};'>❄️ Snowflake x Actia</h1>", unsafe_allow_html=True)
     st.markdown(f"<h3 style='text-align: center; color: {ACTIA_GREEN};'>L'IA au Service des Gens et des Décisions</h3>", unsafe_allow_html=True)
     
@@ -113,75 +113,40 @@ if page == "🏠 Accueil":
     st.markdown(f"<h2 style='color: {ACTIA_GREY}; text-align: center;'>📋 Agenda de la Démo</h2>", unsafe_allow_html=True)
     st.markdown("<br>", unsafe_allow_html=True)
     
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     
     with col1:
         st.markdown(f"""
         <div style='background: linear-gradient(135deg, {ACTIA_GREEN} 0%, {ACTIA_DARK_GREEN} 100%); 
-                    padding: 25px; border-radius: 15px; margin: 10px 0; height: 200px;'>
-            <h3 style='color: white; margin: 0;'>1️⃣ Rendre l'IA Accessible</h3>
-            <p style='color: white; margin-top: 15px; font-size: 16px;'>
-                • QR code<br>
-                • Parler à l'IA en langage naturel<br>
-                • Tous les LLM (GPT, DeepSeek...)<br>
-                • Sécurité & confidentialité garanties
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown(f"""
-        <div style='background: linear-gradient(135deg, {ACTIA_GREY} 0%, #8B8B8B 100%); 
-                    padding: 25px; border-radius: 15px; margin: 10px 0; height: 200px;'>
-            <h3 style='color: white; margin: 0;'>3️⃣ Vendre vos Données</h3>
-            <p style='color: white; margin-top: 15px; font-size: 16px;'>
-                • Enrichissement externe (S&P 500, météo)<br>
-                • Meilleurs forecasts<br>
-                • Marketplace pour monétiser<br>
-                • Nouveaux flux de revenus
-            </p>
+                    padding: 25px; border-radius: 15px; margin: 10px 0; height: 280px;
+                    display: flex; flex-direction: column; justify-content: center;'>
+            <h3 style='color: white; margin: 0; text-align: center; font-size: 20px;'>1️⃣ La Donnée en libre accès :</h3>
+            <h4 style='color: white; margin: 10px 0 0 0; text-align: center; font-size: 18px; font-weight: normal;'>Partout, Pour Tous.</h4>
         </div>
         """, unsafe_allow_html=True)
     
     with col2:
         st.markdown(f"""
         <div style='background: linear-gradient(135deg, {ACTIA_GREY} 0%, {ACTIA_DARK_GREEN} 100%); 
-                    padding: 25px; border-radius: 15px; margin: 10px 0; height: 200px;'>
-            <h3 style='color: white; margin: 0;'>2️⃣ L'IA c'est aussi le ML</h3>
-            <p style='color: white; margin-top: 15px; font-size: 16px;'>
-                • Dashboard OEE temps réel<br>
-                • Prédictions & forecasting<br>
-                • Détection d'anomalies<br>
-                • Optimisation production
-            </p>
+                    padding: 25px; border-radius: 15px; margin: 10px 0; height: 280px;
+                    display: flex; flex-direction: column; justify-content: center;'>
+            <h3 style='color: white; margin: 0; text-align: center; font-size: 20px;'>2️⃣ La Donnée Captive Libérée :</h3>
+            <h4 style='color: white; margin: 10px 0 0 0; text-align: center; font-size: 18px; font-weight: normal;'>Transformer le Bruit en Action.</h4>
         </div>
         """, unsafe_allow_html=True)
-        
+    
+    with col3:
         st.markdown(f"""
         <div style='background: linear-gradient(135deg, {ACTIA_GREEN} 0%, #1E8B57 100%); 
-                    padding: 25px; border-radius: 15px; margin: 10px 0; height: 200px;'>
-            <h3 style='color: white; margin: 0;'>4️⃣ Tout est Données</h3>
-            <p style='color: white; margin-top: 15px; font-size: 16px;'>
-                • PDF → Excel automatique<br>
-                • Image → Texte<br>
-                • Détection d'anomalies visuelles<br>
-                • Énorme potentiel non structuré
-            </p>
+                    padding: 25px; border-radius: 15px; margin: 10px 0; height: 280px;
+                    display: flex; flex-direction: column; justify-content: center;'>
+            <h3 style='color: white; margin: 0; text-align: center; font-size: 20px;'>3️⃣ La Donnée Externe Stratégique :</h3>
+            <h4 style='color: white; margin: 10px 0 0 0; text-align: center; font-size: 18px; font-weight: normal;'>Anticiper et Préserver les Marges.</h4>
         </div>
         """, unsafe_allow_html=True)
-    
-    st.markdown("<br><br>", unsafe_allow_html=True)
-    
-    # Footer EBC 2025
-    st.markdown(f"""
-    <div style='text-align: center; padding: 20px; background-color: {ACTIA_GREY}; 
-                border-radius: 10px; color: white; margin-top: 40px;'>
-        <p style='margin: 0; font-size: 18px; font-weight: bold;'>EBC 2025</p>
-        <p style='margin: 5px 0 0 0; font-size: 14px;'>❄️ Powered by Snowflake</p>
-    </div>
-    """, unsafe_allow_html=True)
 
 # IA Accessible Page
-elif page == "🤖 IA Accessible":
+elif page == "🤖 Nea Actia":
     st.markdown(f"<h1 style='color: {ACTIA_GREY};'>🤖 Rendre l'IA Accessible</h1>", unsafe_allow_html=True)
     
     st.markdown(f"""
@@ -315,7 +280,7 @@ elif page == "🤖 IA Accessible":
         """, unsafe_allow_html=True)
 
 # ML Page (fusion Traçabilité + Prédictions)
-elif page == "🏭 ML":
+elif page == "📈 Anticipation & Marges":
     st.markdown(f"<h1 style='color: {ACTIA_GREY};'>🔮 L'IA qui Anticipe et qui Agit</h1>", unsafe_allow_html=True)
     st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>Du Forecasting à l'Analyse Prescriptive</p>", unsafe_allow_html=True)
     
@@ -1006,7 +971,7 @@ elif page == "📊 Prédictions":
             st.metric("🎯 Confiance Modèle", "91.2%", "Élevée")
 
 # Tout est Données Page
-elif page == "📄 Tout est Données":
+elif page == "📚 Donnée Captive":
     st.markdown(f"<h1 style='color: {ACTIA_GREY};'>📄 Tout devient moteur pour l'IA</h1>", unsafe_allow_html=True)
     st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>L'histoire de Claire - Service Client Actia</p>", unsafe_allow_html=True)
     
@@ -1428,6 +1393,50 @@ Marie: "Oui, j'envoie l'alerte qualité maintenant."
                     """, unsafe_allow_html=True)
         else:
             st.info("👆 Uploadez un PDF contenant une transcription audio pour analyse")
+
+# Pour conclure Page
+elif page == "📹 Pour conclure":
+    st.markdown(f"<h1 style='color: {ACTIA_GREY};'>📹 Pour Conclure</h1>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>L'innovation profitable commence ici</p>", unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Introduction
+    st.markdown(f"""
+    <div style='background-color: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 20px 0;'>
+        <h2 style='color: {ACTIA_GREY}; margin-top: 0;'>🎯 Snowflake : Plus qu'une Plateforme, un Accélérateur de Transformation</h2>
+        <p style='font-size: 17px; color: {ACTIA_GREY}; line-height: 1.8;'>
+            Vous avez vu comment Snowflake transforme la donnée en actions concrètes :
+            <br><br>
+            ✅ <strong>IA accessible</strong> partout, pour tous<br>
+            ✅ <strong>Données non structurées</strong> transformées en insights<br>
+            ✅ <strong>Enrichissement externe</strong> pour anticiper et préserver les marges
+            <br><br>
+            Regardez cette vidéo pour comprendre l'impact de Snowflake sur votre compétitivité.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
+    # Section vidéo
+    st.markdown(f"<h2 style='color: {ACTIA_GREY};'>🎬 Vidéo de Conclusion</h2>", unsafe_allow_html=True)
+    
+    # Vidéo YouTube
+    video_url = "https://youtu.be/-82VSYiPZPg"
+    st.video(video_url)
+    
+    # Message de conclusion
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown(f"""
+    <div style='background: linear-gradient(135deg, {ACTIA_GREEN} 0%, {ACTIA_DARK_GREEN} 100%); 
+                padding: 30px; border-radius: 15px; text-align: center;'>
+        <h2 style='color: white; margin: 0;'>🚀 Prêt à Transformer Vos Données en Avantage Concurrentiel ?</h2>
+        <p style='color: white; margin-top: 15px; font-size: 18px;'>
+            Contactez-nous pour découvrir comment Snowflake peut accélérer votre innovation.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Footer
 st.markdown("<br><br>", unsafe_allow_html=True)
