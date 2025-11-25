@@ -975,62 +975,33 @@ elif page == "📚 Donnée Captive":
     st.markdown(f"<h1 style='color: {ACTIA_GREY};'>📄 Tout devient moteur pour l'IA</h1>", unsafe_allow_html=True)
     st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>L'histoire de Claire - Service Client Actia</p>", unsafe_allow_html=True)
     
-    # INTRO : Message clé
-    st.markdown(f"""
-    <div style='background-color: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px;'>
-        <h2 style='color: {ACTIA_GREY}; margin-top: 0;'>💡 80% des données d'entreprise sont non structurées</h2>
-        <p style='font-size: 17px; color: {ACTIA_GREY}; line-height: 1.8;'>
-            <strong>PDF</strong> de rapports et contrats • <strong>Photos</strong> de contrôle qualité • <strong>Audio</strong> des call centers
-            <br><br>
-            Aujourd'hui, <strong>tout cela devient exploitable</strong> sur une seule plateforme.
-            <br>
-            Laissez-moi vous montrer avec <strong>UNE histoire</strong>.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
     
-    #================================
-    # SECTION 1: CONTEXTE DU PROBLÈME
-    #================================
+    # Mise en colonnes : Message clé + Titre Analyse
+    col_intro, col_title = st.columns([1, 1])
     
-    st.markdown(f"<h2 style='color: {ACTIA_GREY}; margin-top: 30px;'>🚨 Incident Client en Cours</h2>", unsafe_allow_html=True)
+    with col_intro:
+        st.markdown(f"""
+        <div style='background-color: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); height: 100%;'>
+            <h2 style='color: {ACTIA_GREY}; margin-top: 0;'>💡 80% des données d'entreprise sont non structurées</h2>
+            <p style='font-size: 17px; color: {ACTIA_GREY}; line-height: 1.8;'>
+                <strong>PDF</strong> de rapports et contrats • <strong>Photos</strong> de contrôle qualité • <strong>Audio</strong> des call centers
+                <br><br>
+                Aujourd'hui, <strong>tout cela devient exploitable</strong> sur une seule plateforme.
+                <br>
+                Laissez-moi vous montrer avec <strong>UNE histoire</strong>.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
     
-    st.markdown(f"""
-    <div style='background-color: #ffebee; border-left: 5px solid #f44336; padding: 20px; border-radius: 10px; margin: 15px 0;'>
-        <h3 style='color: #c62828; margin-top: 0;'>⚠️ Alerte reçue à 09:05</h3>
-        <table style='width: 100%; color: #424242;'>
-            <tr><td><strong>🏢 Client :</strong></td><td>PSA Peugeot-Citroën (Compte stratégique - €2M/an)</td></tr>
-            <tr><td><strong>👤 Contact :</strong></td><td>Marc Leblanc - Responsable Achats</td></tr>
-            <tr><td><strong>📦 Produit :</strong></td><td>Module TGX-2847 (Lot L2847-NOV24)</td></tr>
-            <tr><td><strong>⚠️ Problème :</strong></td><td>Défauts visuels sur 50/50 unités reçues</td></tr>
-            <tr><td><strong>🔴 Urgence :</strong></td><td>Production PSA arrêtée - Perte €15K/jour</td></tr>
-        </table>
-    </div>
-    """, unsafe_allow_html=True)
+    with col_title:
+        st.markdown(f"""
+        <div style='background-color: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); height: 100%; display: flex; align-items: center; justify-content: center;'>
+            <h2 style='color: {ACTIA_GREEN}; margin: 0; text-align: center;'>🔍 Analyse Multi-Source<br>Interface Unifiée</h2>
+        </div>
+        """, unsafe_allow_html=True)
     
-    st.markdown(f"""
-    <div style='background-color: {ACTIA_LIGHT_GREY}; padding: 20px; border-radius: 10px; margin: 15px 0; border-left: 5px solid {ACTIA_GREY};'>
-        <h4 style='color: {ACTIA_GREY}; margin-top: 0;'>📞 Déclaration du client</h4>
-        <p style='font-style: italic; color: {ACTIA_GREY}; font-size: 16px; line-height: 1.8;'>
-            "C'est <strong>inacceptable</strong>. Nous avons reçu 50 unités du TGX-2847 ce matin, et <strong>TOUTES</strong> 
-            présentent des défauts de soudure visibles. Notre ligne de production Peugeot 3008 est <strong>arrêtée</strong>. 
-            Nous exigeons un geste commercial immédiat et un remplacement sous 48h, sinon nous activerons la 
-            <strong>clause de pénalité</strong> du contrat."
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown(f"""
-    <div style='background-color: white; padding: 15px; border-radius: 10px; margin: 20px 0; text-align: center;'>
-        <h3 style='color: {ACTIA_GREEN}; margin: 0;'>🎯 Défi de Claire : Résoudre ce problème en 10 minutes</h3>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    #===========================================
-    # SECTION 2: ANALYSE MULTI-SOURCE (4 colonnes)
-    #===========================================
-    
-    st.markdown(f"<h2 style='color: {ACTIA_GREY}; margin-top: 30px;'>🔍 Analyse Multi-Source - Interface Unifiée</h2>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
     
     # 3 tabs: PDF textuel, Photo, et Audio
     tabs = st.tabs(["📄 PDF → Excel (Analyse d'Écart)", "📷 Photo → Détection Défauts", "🎤 Audio → Insights"])
