@@ -189,18 +189,8 @@ elif page == "🤖 Nea Actia":
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown(f"""
-        <div class='info-box'>
-            <h3>📲 Avec Cortex Analyst, vous pouvez:</h3>
-            <ul style='font-size: 16px; line-height: 1.8;'>
-                <li><strong>📊 Dashboard temps réel</strong><br>Production, qualité, efficacité, alertes</li>
-                <li><strong>💬 Poser des questions en langage naturel</strong><br>"Quel est le taux de qualité ce mois-ci?"</li>
-                <li><strong>🔍 Analyses instantanées</strong><br>Tendances, prévisions, recommandations</li>
-                <li><strong>📈 Graphiques interactifs</strong><br>Production 7 jours, qualité par station</li>
-                <li><strong>🌍 Traduction instantanée</strong><br>Dashboard disponible en plusieurs langues</li>
-            </ul>
-        </div>
-        """, unsafe_allow_html=True)
+        # Photo d'Albert
+        st.image("albert.png", use_container_width=True)
     
     with col2:
         st.markdown(f"<h3 style='color: {ACTIA_GREEN};'>👀 Aperçu Cortex Analyst</h3>", unsafe_allow_html=True)
