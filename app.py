@@ -1287,6 +1287,10 @@ Marie: "Oui, j'envoie l'alerte qualité maintenant."
                     """, unsafe_allow_html=True)
         else:
             st.info("👆 Uploadez un PDF contenant une transcription audio pour analyse")
+    
+    # Photo d'Alban en bas de page
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    st.image("Alban.png", use_container_width=True)
 
 # Pour conclure Page
 elif page == "📹 Pour conclure":
