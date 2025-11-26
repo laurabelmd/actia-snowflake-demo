@@ -165,7 +165,7 @@ elif page == "🤖 Nea Actia":
     with col1:
         st.markdown(f"""
         <div class='success-box'>
-            <h2>👷 Alban - ✨ Scannez le QR Code</h2>
+            <h2>✨ Scannez le QR Code</h2>
             <p style='font-size: 18px;'>Accédez à Cortex Analyst sur votre téléphone</p>
             <p style='font-size: 16px; margin-top: 10px;'>Dashboard temps réel + IA conversationnelle</p>
         </div>
@@ -184,6 +184,12 @@ elif page == "🤖 Nea Actia":
         st.image(qr_code_url, width=400)
         
         st.markdown(f"""
+        <div style='text-align: center; padding: 10px; margin: 10px 0;'>
+            <p style='font-size: 20px; color: {ACTIA_GREY}; font-weight: bold; margin: 0;'>👷 Albert</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown(f"""
         <div class='info-box'>
             <h3>📲 Avec Cortex Analyst, vous pouvez:</h3>
             <ul style='font-size: 16px; line-height: 1.8;'>
@@ -199,8 +205,12 @@ elif page == "🤖 Nea Actia":
     with col2:
         st.markdown(f"<h3 style='color: {ACTIA_GREEN};'>👀 Aperçu Cortex Analyst</h3>", unsafe_allow_html=True)
         
-        # Afficher l'image de l'interface Cortex Analyst
+        # Afficher l'image de l'interface Cortex Analyst avec un cadre gris foncé
+        st.markdown(f"""
+        <div style='border: 8px solid #424242; border-radius: 10px; padding: 5px; background-color: #424242;'>
+        """, unsafe_allow_html=True)
         st.image("IMG_1306.jpg", use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
 
 # ML Page (fusion Traçabilité + Prédictions)
 elif page == "📈 Anticipation & Marges":
@@ -896,7 +906,7 @@ elif page == "📊 Prédictions":
 # Tout est Données Page
 elif page == "📚 Donnée Captive":
     st.markdown(f"<h1 style='color: {ACTIA_GREY};'>📄 Tout devient moteur pour l'IA</h1>", unsafe_allow_html=True)
-    st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>👷 L'histoire d'Alban - Responsable Achats Actia</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>👷 L'histoire d'Albert - Responsable Achats Actia</p>", unsafe_allow_html=True)
     
     st.markdown("<br>", unsafe_allow_html=True)
     
