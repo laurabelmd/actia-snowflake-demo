@@ -165,7 +165,7 @@ elif page == "🤖 Nea Actia":
     with col1:
         st.markdown(f"""
         <div class='success-box'>
-            <h2>✨ Scannez le QR Code</h2>
+            <h2>👷 Alban - ✨ Scannez le QR Code</h2>
             <p style='font-size: 18px;'>Accédez à Cortex Analyst sur votre téléphone</p>
             <p style='font-size: 16px; margin-top: 10px;'>Dashboard temps réel + IA conversationnelle</p>
         </div>
@@ -896,7 +896,7 @@ elif page == "📊 Prédictions":
 # Tout est Données Page
 elif page == "📚 Donnée Captive":
     st.markdown(f"<h1 style='color: {ACTIA_GREY};'>📄 Tout devient moteur pour l'IA</h1>", unsafe_allow_html=True)
-    st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>L'histoire de Claire - Service Client Actia</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-size: 18px; color: {ACTIA_GREEN};'>👷 L'histoire d'Alban - Responsable Achats Actia</p>", unsafe_allow_html=True)
     
     st.markdown("<br>", unsafe_allow_html=True)
     
@@ -927,11 +927,11 @@ elif page == "📚 Donnée Captive":
     st.markdown("<br>", unsafe_allow_html=True)
     
     # 3 tabs: PDF textuel, Photo, et Audio
-    tabs = st.tabs(["📄 PDF → Excel (Analyse d'Écart)", "📷 Photo → Détection Défauts", "🎤 Audio → Insights"])
+    tabs = st.tabs(["📄 PDF → Excel (Analyser les bons de commande)", "📷 Photo → Détection Défauts", "🎤 Audio → Insights"])
     
     # TAB 1: PDF → Excel (Analyse d'Écart et Coûts)
     with tabs[0]:
-        st.markdown(f"<h2 style='color: {ACTIA_GREY};'>📄 Analyse d'Écart et Coûts (Variance Analysis)</h2>", unsafe_allow_html=True)
+        st.markdown(f"<h2 style='color: {ACTIA_GREY};'>📄 Analyse des Bons de Commande</h2>", unsafe_allow_html=True)
         st.markdown(f"<p style='color: {ACTIA_GREY}; font-size: 16px;'>Convertissez automatiquement vos rapports PDF en données Excel exploitables</p>", unsafe_allow_html=True)
         
         st.markdown("<br>", unsafe_allow_html=True)

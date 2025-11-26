@@ -280,6 +280,23 @@ with col4:
     </div>
     """, unsafe_allow_html=True)
 
+# Expander cliquable pour détails des alertes
+with st.expander("⚠️ Détails des Alertes", expanded=False):
+    st.markdown(f"""
+    <div style='background-color: #fff3e0; padding: 15px; border-radius: 10px; border-left: 4px solid #ff9800;'>
+        <h4 style='color: #e65100; margin-top: 0;'>🔴 Risque d'obsolescence fournisseur détecté</h4>
+        <p style='color: #424242; margin: 10px 0;'>
+            <strong>Délai estimé :</strong> 90 jours<br>
+            <strong>Impact :</strong> 7 produits concernés<br>
+            <strong>Fournisseur :</strong> NXP Semiconductors<br>
+            <strong>Composants à risque :</strong> IC-NXP-2847, IC-NXP-3421, IC-NXP-4589
+        </p>
+        <p style='color: #e65100; font-weight: bold; margin: 10px 0;'>
+            💡 Action recommandée : Contacter le fournisseur pour confirmation et identifier des alternatives
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
 # Production Charts (empilé verticalement pour mobile)
 st.markdown("<br>", unsafe_allow_html=True)
 
