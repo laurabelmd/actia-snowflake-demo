@@ -96,13 +96,13 @@ if page == "🚀 Vision":
     # Intro humaniste
     st.markdown(f"""
     <div style='background-color: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);'>
-        <h2 style='color: {ACTIA_GREY}; text-align: center;'>👥 Derrière la Donnée, il y a des Gens</h2>
+        <h2 style='color: {ACTIA_GREY}; text-align: center;'>👥 Derrière la Donnée, il y a des Décisions</h2>
         <p style='font-size: 18px; color: {ACTIA_GREY}; text-align: center; line-height: 1.8;'>
-            Je suis allée sur vos sites, j'ai rencontré plein de gens. Pourquoi je commence avec ces banalités ? 
+            Après la présentation sur la vision et la stratégie, un aperçu de la plateforme. 
             <br><br>
-            <strong>Parce que derrière la donnée, il y a des gens pour prendre des décisions.</strong>
+            <strong>Non pas comme une brique en surcouche, mais comme un socle pour la stratégie IA et Data.</strong>
             <br><br>
-            Des gens qui voient leur environnement se bouleverser rapidement par l'émergence de l'IA.
+            Allons y !
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -946,21 +946,27 @@ elif page == "📚 Donnée Captive":
                 st.markdown(f"<h4 style='color: {ACTIA_GREY};'>📄 Document PDF Brut</h4>", unsafe_allow_html=True)
                 
                 st.text_area("Contenu extrait du PDF:", """
-RAPPORT D'ANALYSE D'ÉCART - Q4 2024
+RESUME DE BON DE COMMANDE - 2023-2024-2025
 Actia Group - Division Automobile
-Date: 20 Novembre 2024
+Date: 27 Novembre 2025
 -------------------------------------------
 
-COMPOSANTS ÉLECTRONIQUES:
+FOURNISSEUR:
+TechComponents International
+45 Rue de l'Innovation
+31400 Toulouse, France
+TVA: FR12345678901
 
-TGX-2847-A (ECU Principal)
-- Coût Prévu: €45.20
-- Coût Réel: €52.80
-- Écart: +€7.60 (+16.8%)
-- Volume: 1,247 unités
-- Impact Total: +€9,477
+ARTICLES COMMANDÉS:
 
-PCB-Advanced (Carte mère)
+1. Carte ETX-845 (Calculateur Principal)
+   Réf: ETX845-2024-A
+   Quantité: 500 unités
+   Prix unitaire: €125.00
+   Montant: €62,500.00
+   Délai: 3 semaines
+
+2. Module CAN-Bus (Communication)
 - Coût Prévu: €28.50
 - Coût Réel: €31.20
 - Écart: +€2.70 (+9.5%)
@@ -1004,7 +1010,7 @@ Alerte: Dépassement budget composants
                         'Coût Réel (€)': [52.80, 31.20, 0.42, 17.50],
                         'Écart (€)': [7.60, 2.70, 0.12, -1.40],
                         'Écart (%)': ['+16.8%', '+9.5%', '+40.0%', '-7.4%'],
-                        'Volume': [1247, 2134, 15890, 856],
+                        'LOT': [1247, 2134, 15890, 856],
                         'Impact Total (€)': [9477, 5762, 1907, -1198]
                     })
                     
@@ -1024,7 +1030,7 @@ Alerte: Dépassement budget composants
                     # Metrics
                     col_m1, col_m2, col_m3 = st.columns(3)
                     with col_m1:
-                        st.metric("Écart Total", "+€16,948", "⚠️ +12.3%")
+                        st.metric("Numero de lot de la derniere commanded", "1247", "⚠️ +12.3% de croissance de commande. Client Prometteur")
                     with col_m2:
                         st.metric("Composants Analysés", "4", "100%")
                     with col_m3:
@@ -1195,24 +1201,12 @@ Alerte: Dépassement budget composants
                 st.markdown("<br>", unsafe_allow_html=True)
                 
                 st.text_area("📝 Transcription extraite du PDF:", """
-[Réunion Qualité - 23 Nov 2024 - 10:45]
-
-Ingénieur Qualité (Marie):
-"Bonjour à tous. J'ai constaté une augmentation des défauts 
-sur le composant TGX-2847-A depuis hier soir. On a eu 3 rejets 
-sur les 50 dernières unités testées. Le problème semble venir 
-des soudures sur le condensateur C47."
-
-Responsable Production (Jean):
-"J'ai vérifié les paramètres. La température de la station 
-de soudage était à 315°C au lieu de 340°C. On a eu un problème 
-de calibration ce matin."
-
-Directeur Opérations (Paul):
-"Il faut retester immédiatement les 200 unités produites 
-depuis hier 18h. Marie, tu peux coordonner ça?"
-
-Marie: "Oui, j'envoie l'alerte qualité maintenant."
+ALBAN (ACTIA) : Service Support Qualité Actia, bonjour. Alban à votre écoute.
+M. DUBOIS (CLIENT) : Bonjour Alban, Monsieur Dubois, de TechComponents International. J'ai un souci majeur sur un lot de cartes ETX-845. Elles sont censées être les calculateurs de dernière génération !
+ALBAN (ACTIA) : Je suis désolé d'entendre cela. Quel est le problème exact que vous rencontrez, Monsieur Dubois ?
+M. DUBOIS (CLIENT) : Le problème, c'est que notre module logiciel n'arrive pas à se synchroniser avec la carte. On a des erreurs d'initialisation aléatoires. Le code série est le ETX845-SN-998533. On a tenté notre propre diagnostic, mais on ne sait pas si c'est notre soft, un problème de firmware sur votre carte, ou carrément un défaut sur la ligne d'assemblage ! Le défaut est insaisissable !
+ALBAN (ACTIA) : Un défaut insaisissable... D'accord. SN-998533. Je crée un ticket qualité prioritaire, référence TQ-2025-4590. Pouvez-vous me dire si le problème est isolé à cette seule carte ou si vous le voyez sur l'ensemble du lot ?
+"
 """, height=320, disabled=True)
             
             with col_aud2:
@@ -1237,7 +1231,7 @@ Marie: "Oui, j'envoie l'alerte qualité maintenant."
                             <li><strong>Cause racine:</strong> Température incorrecte (315°C vs 340°C requis)</li>
                             <li><strong>Impact mesuré:</strong> 6% taux de rejet (3/50 unités)</li>
                             <li><strong>Période affectée:</strong> Hier 18h00 → Aujourd'hui 10h45</li>
-                            <li><strong>Unités à retester:</strong> 200 unités</li>
+                            <li><strong>Sentiment Score:</strong> -0.76 en moyenne</li>
                             <li><strong>Coût estimé:</strong> €3,200 si défauts non détectés</li>
                         </ul>
                     </div>
